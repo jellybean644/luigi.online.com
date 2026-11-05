@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Teacher Dashboard | Luigi Giussani High School</title>
+
+    <style>
+        :root {
+            --navy: #090936;
+            --primary: #176b87;
+            --primary-dark: #10516a;
+            --gold: #f4b942;
+            --background: #f3f7fb;
+            --white: #ffffff;
+            --text: #17283b;
+            --muted: #607286;
+            --border: #dfe8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--background);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        .container {
+            width: min(1150px, calc(100% - 36px));
+            margin-inline: auto;
+        }
+
+        /* HEADER */
+
+        .site-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            min-height: 96px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--navy);
+        }
+
+        .logo-icon {
+            display: grid;
+            place-items: center;
+            width: 58px;
+            height: 58px;
+            flex-shrink: 0;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+
+        .brand-name {
+            display: block;
+            font-size: 1rem;
+            font-weight: 800;
+            line-height: 1.25;
+        }
+
+        .brand-subtitle {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+        }
+
+        .navigation {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--muted);
+        }
+
+        .navigation a:hover,
+        .navigation a[aria-current="page"] {
+            color: var(--primary);
+        }
+
+        .logout-button {
+            padding: 9px 15px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            background: var(--white);
+            color: var(--navy);
+            cursor: pointer;
+        }
+
+        .logout-button:hover {
+            background: var(--background);
+        }
+
+        /* BANNER */
+
+        .banner {
+            padding: 58px 0;
+            color: var(--white);
+            background: linear-gradient(
+                120deg,
+                var(--navy),
+                var(--primary)
+            );
+        }
+
+        .eyebrow {
+            margin: 0 0 10px;
+            color: var(--gold);
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+        }
+
+        .banner h1 {
+            margin: 0 0 12px;
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            line-height: 1.15;
+        }
+
+        .banner-description {
+            max-width: 680px;
+            margin: 0;
+            color: #e1eef8;
+        }
+
+        /* MAIN CONTENT */
+
+        .main-content {
+            padding: 38px 0 65px;
+        }
+
+        .demo-notice {
+            padding: 15px 18px;
+            margin-bottom: 28px;
+            border-left: 4px solid var(--gold);
+            border-radius: 9px;
+            background: #fff7e4;
+            font-size: 0.92rem;
+        }
+
+        .section-heading {
+            margin-bottom: 24px;
+        }
+
+        .section-heading h2 {
+            margin: 0 0 8px;
+            font-size: 2.4rem;
+        }
+
+        .section-heading p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .search-label {
+            display: block;
+            margin-bottom: 9px;
+            font-weight: 800;
+        }
+
+        .search-input {
+            display: block;
+            width: 100%;
+            max-width: 560px;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            border: 1px solid #c7d5e2;
+            border-radius: 11px;
+            background: var(--white);
+            color: var(--text);
+        }
+
+        .search-input:focus {
+            outline: 3px solid #d0e8f2;
+            border-color: var(--primary);
+        }
+
+        .result-count {
+            margin: 0 0 22px;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .subject-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 25px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--white);
+            text-decoration: none;
+            box-shadow: 0 8px 24px rgba(16, 40, 65, 0.05);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+
+        .subject-card:focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 4px;
+        }
+
+        .subject-icon {
+            display: grid;
+            place-items: center;
+            width: 52px;
+            height: 52px;
+            margin-bottom: 16px;
+            border-radius: 14px;
+            background: #18d612;
+            font-size: 1.75rem;
+        }
+
+        .subject-card h3 {
+            margin: 0 0 9px;
+            font-size: 1.2rem;
+            line-height: 1.3;
+            overflow-wrap: anywhere;
+        }
+
+        .subject-card p {
+            margin: 0 0 18px;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .open-link {
+            margin-top: auto;
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 0.92rem;
+        }
+
+        .empty-message {
+            padding: 25px;
+            border: 1px dashed #b7c8d8;
+            border-radius: 12px;
+            background: var(--white);
+        }
+
+        /* FOOTER */
+
+        .footer {
+            padding: 25px 0;
+            background: var(--navy);
+            color: #d9e4f2;
+            text-align: center;
+            font-size: 0.88rem;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        /* SMALLER SCREENS */
+
+        @media (max-width: 900px) {
+            .subject-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .header-inner {
+                flex-wrap: wrap;
+                padding: 15px 0;
+                gap: 15px;
+            }
+
+            .navigation {
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .subject-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .brand-name {
+                font-size: 0.88rem;
+            }
+
+            .brand-subtitle {
+                font-size: 0.68rem;
+            }
+
+            .navigation {
+                width: 100%;
+                gap: 14px;
+            }
+
+            .navigation a {
+                font-size: 0.85rem;
+            }
+
+            .banner {
+                padding: 38px 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .subject-card {
+                transition: none;
+            }
+
+            .subject-card:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+
+        <a href="index.html" class="brand">
+            <span class="logo-icon">LGHS</span>
+
+            <span>
+                <span class="brand-name">
+                    Luigi Giussani High School
+                </span>
+
+                <span class="brand-subtitle">
+                    SCHOOL WEBSITE &amp; ASSIGNMENT PORTAL
+                </span>
+            </span>
+        </a>
+
+        <nav class="navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="classes.html">Classes</a>
+
+            <a
+                href="teacher-dashboard.html"
+                aria-current="page"
+            >
+                Dashboard
+            </a>
+
+            <button
+                type="button"
+                id="logoutButton"
+                class="logout-button"
+            >
+                Logout
+            </button>
+        </nav>
+
+    </div>
+</header>
+
+<section class="banner">
+    <div class="container">
+        <p class="eyebrow">TEACHER WORKSPACE</p>
+
+        <h1>Choose the subject you teach</h1>
+
+        <p class="banner-description">
+            Open a subject, choose a class from S1 to S6,
+            then attach and publish the assignment paper.
+        </p>
+    </div>
+</section>
+
+<main class="container main-content" id="dashboardContent" hidden>
+
+   
+    <div class="section-heading">
+        <h2>Subjects</h2>
+
+        <p>
+            For example: History → S1 → Create Assignment.
+        </p>
+    </div>
+
+    <label for="subjectSearch" class="search-label">
+        Find your subject
+    </label>
+
+    <input
+        type="search"
+        id="subjectSearch"
+        class="search-input"
+        placeholder="Search Physics, Kiswahili, History..."
+        autocomplete="off"
+    >
+
+    <p
+        id="resultCount"
+        class="result-count"
+        role="status"
+        aria-live="polite"
+    ></p>
+
+    <div id="subjectGrid" class="subject-grid"></div>
+
+    <p id="emptyMessage" class="empty-message" hidden>
+        No matching subject found. Try another name.
+    </p>
+
+</main>
+
+<p id="storageError" class="container empty-message" hidden>
+    The demo login could not be checked. Enable browser storage,
+    open the project with Live Server and log in again.
+</p>
+
+<noscript>
+    <p class="container empty-message">
+        Enable JavaScript to display the subject links.
+    </p>
+</noscript>
+
+<footer class="footer">
+    <div class="container">
+        <p>LUIGI GIUSSANI HIGH SCHOOL</p>
+        <p>School website and assignment portal</p>
+    </div>
+</footer>
+
+<script>
+(function () {
+    "use strict";
+
+    const subjects = [
+        { name: "English", icon: "📘" },
+        { name: "Mathematics", icon: "📐" },
+        { name: "Physics", icon: "⚛️" },
+        { name: "Chemistry", icon: "🧪" },
+        { name: "Biology", icon: "🧬" },
+        { name: "Geography", icon: "🌍" },
+        { name: "History and Political Education", icon: "🏛️" },
+        { name: "Kiswahili", icon: "🗣️" },
+        { name: "Agriculture", icon: "🌾" },
+        { name: "Literature in English", icon: "📚" },
+        { name: "Entrepreneurship", icon: "💼" },
+        { name: "ICT", icon: "💻" },
+        { name: "Religious Education", icon: "🕊️" },
+        { name: "Physical Education", icon: "⚽" },
+        { name: "Art and Design", icon: "🎨" },
+        { name: "General Paper", icon: "📝" },
+        { name: "Economics", icon: "📊" }
+    ];
+
+    const dashboard = document.getElementById("dashboardContent");
+    const storageError = document.getElementById("storageError");
+    const grid = document.getElementById("subjectGrid");
+    const search = document.getElementById("subjectSearch");
+    const resultCount = document.getElementById("resultCount");
+    const emptyMessage = document.getElementById("emptyMessage");
+    const logoutButton = document.getElementById("logoutButton");
+
+    logoutButton.addEventListener("click", function () {
+        try {
+            sessionStorage.removeItem("teacherLoggedIn");
+        } catch (error) {
+            console.error(error);
+        }
+
+        window.location.href = "teacher-login.html";
+    });
+
+    try {
+        const loggedIn = sessionStorage.getItem("teacherLoggedIn");
+
+        if (loggedIn !== "true") {
+            window.location.replace("teacher-login.html");
+            return;
+        }
+    } catch (error) {
+        console.error(error);
+        storageError.hidden = false;
+        return;
+    }
+
+    function displaySubjects(searchText) {
+        const query = searchText.trim().toLowerCase();
+
+        const matchingSubjects = subjects.filter(function (subject) {
+            return subject.name.toLowerCase().includes(query);
+        });
+
+        grid.replaceChildren();
+
+        matchingSubjects.forEach(function (subject) {
+            const card = document.createElement("a");
+            card.className = "subject-card";
+
+            const parameters = new URLSearchParams({
+                subject: subject.name
+            });
+
+            card.href =
+                "teacher-subject-classes.html?" +
+                parameters.toString();
+
+            const icon = document.createElement("span");
+            icon.className = "subject-icon";
+            icon.textContent = subject.icon;
+            icon.setAttribute("aria-hidden", "true");
+
+            const heading = document.createElement("h3");
+            heading.textContent = subject.name;
+
+            const description = document.createElement("p");
+            description.textContent =
+                "Choose a class and prepare its assignment.";
+
+            const action = document.createElement("span");
+            action.className = "open-link";
+            action.textContent = "Choose class →";
+
+            card.append(icon, heading, description, action);
+            grid.appendChild(card);
+        });
+
+        resultCount.textContent =
+            matchingSubjects.length + " subjects displayed";
+
+        emptyMessage.hidden = matchingSubjects.length !== 0;
+    }
+
+    search.addEventListener("input", function () {
+        displaySubjects(search.value);
+    });
+
+    dashboard.hidden = false;
+    displaySubjects("");
+})();
+</script>
+
+</body>
+</html>

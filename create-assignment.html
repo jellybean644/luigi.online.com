@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Create Assignment | Luigi Giussani High School</title>
+
+    <style>
+        :root {
+            --navy: #090936;
+            --primary: #176b87;
+            --primary-dark: #10516a;
+            --gold: #f4b942;
+            --background: #f3f7fb;
+            --text: #17283b;
+            --muted: #607286;
+            --border: #dfe8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--background);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        .container {
+            width: min(900px, calc(100% - 36px));
+            margin-inline: auto;
+        }
+
+        /* HEADER */
+
+        .site-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            min-height: 96px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--navy);
+        }
+
+        .logo-icon {
+            display: grid;
+            place-items: center;
+            width: 58px;
+            height: 58px;
+            flex-shrink: 0;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+
+        .brand-name {
+            display: block;
+            font-size: 1rem;
+            font-weight: 800;
+            line-height: 1.25;
+        }
+
+        .brand-subtitle {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+        }
+
+        .navigation {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--muted);
+        }
+
+        .navigation a:hover,
+        .navigation a[aria-current="page"] {
+            color: var(--primary);
+        }
+
+        /* BANNER */
+
+        .banner {
+            padding: 48px 0;
+            color: var(--white);
+            background: linear-gradient(
+                120deg,
+                var(--navy),
+                var(--primary)
+            );
+        }
+
+        .eyebrow {
+            margin: 0 0 10px;
+            color: var(--gold);
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+        }
+
+        .banner h1 {
+            margin: 0 0 10px;
+            font-size: clamp(1.9rem, 5vw, 3rem);
+            line-height: 1.15;
+        }
+
+        .banner p {
+            margin: 0;
+            color: #e1eef8;
+        }
+
+        /* FORM */
+
+        main {
+            padding: 35px 0 60px;
+        }
+
+        .assignment-location {
+            padding: 16px 20px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--gold);
+            border-radius: 9px;
+            background: #fff7e4;
+            font-weight: 800;
+        }
+
+        .form-card {
+            padding: 30px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--white);
+            box-shadow: 0 8px 24px rgba(16, 40, 65, 0.05);
+        }
+
+        .form-card h2 {
+            margin: 0 0 20px;
+            color: var(--navy);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        textarea,
+        input[type="file"] {
+            display: block;
+            width: 100%;
+            padding: 13px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #c7d5e2;
+            border-radius: 11px;
+            background: var(--white);
+            color: var(--text);
+        }
+
+        textarea {
+            min-height: 160px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: 3px solid #d0e8f2;
+            border-color: var(--primary);
+        }
+
+        .file-help {
+            margin: -12px 0 20px;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .publish-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 10px;
+            background: var(--primary);
+            color: var(--white);
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .publish-button:hover {
+            background: var(--primary-dark);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: var(--primary);
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            padding: 25px 18px;
+            color: #ffffff;
+            background: var(--navy);
+            text-align: center;
+            font-size: 0.88rem;
+        }
+
+        @media (max-width: 650px) {
+            .header-inner {
+                flex-wrap: wrap;
+                padding: 14px 0;
+            }
+
+            .navigation {
+                width: 100%;
+                gap: 14px;
+            }
+
+            .form-card {
+                padding: 20px;
+            }
+
+            .logo-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .brand-name {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+
+        <a href="index.html" class="brand">
+            <span class="logo-icon">LGHS</span>
+
+            <span>
+                <span class="brand-name">
+                    Luigi Giussani High School
+                </span>
+
+                <span class="brand-subtitle">
+                    SCHOOL WEBSITE &amp; ASSIGNMENT PORTAL
+                </span>
+            </span>
+        </a>
+
+        <nav class="navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="teacher-dashboard.html">Dashboard</a>
+            <a href="teacher-login.html">Logout</a>
+        </nav>
+
+    </div>
+</header>
+
+<section class="banner">
+    <div class="container">
+        <p class="eyebrow">TEACHER WORKSPACE</p>
+
+        <h1>Create Assignment</h1>
+
+        <p>
+            Write the instructions and attach the assignment
+            paper for your learners.
+        </p>
+    </div>
+</section>
+
+<main class="container">
+
+    <p id="assignmentLocation" class="assignment-location">
+        Loading selected class...
+    </p>
+
+    <section class="form-card">
+
+        <h2>Assignment details</h2>
+
+        <form id="assignmentForm">
+
+            <label for="assignmentTitle">
+                Assignment title
+            </label>
+
+            <input
+                type="text"
+                id="assignmentTitle"
+                placeholder="Example: Forces and Motion Exercise"
+                required
+            >
+
+            <label for="assignmentInstructions">
+                Instructions
+            </label>
+
+            <textarea
+                id="assignmentInstructions"
+                placeholder="Write clear instructions for the learners"
+                required
+            ></textarea>
+
+            <label for="assignmentDueDate">
+                Due date
+            </label>
+
+            <input
+                type="date"
+                id="assignmentDueDate"
+                required
+            >
+
+            <label for="assignmentFile">
+                Attach assignment paper or notes
+            </label>
+
+            <input
+                type="file"
+                id="assignmentFile"
+                accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.jpeg,.png"
+                required
+            >
+
+            <p class="file-help">
+                You can attach a PDF, Word document,
+                PowerPoint, JPG or PNG file.
+            </p>
+
+            <button
+                type="submit"
+                class="publish-button"
+            >
+                Publish Assignment
+            </button>
+
+        </form>
+
+    </section>
+
+    <a
+        href="teacher-dashboard.html"
+        class="back-link"
+    >
+        ← Back to teacher dashboard
+    </a>
+
+</main>
+
+<footer class="footer">
+    LUIGI GIUSSANI HIGH SCHOOL — Assignment Portal
+</footer>
+
+<script>
+(function () {
+    "use strict";
+
+    const parameters = new URLSearchParams(
+        window.location.search
+    );
+
+    const className =
+        parameters.get("class") ||
+        sessionStorage.getItem("selectedClass");
+
+    const subjectName =
+        parameters.get("subject") ||
+        sessionStorage.getItem("selectedSubject");
+
+    const locationBox =
+        document.getElementById("assignmentLocation");
+
+    const form =
+        document.getElementById("assignmentForm");
+
+    const titleInput =
+        document.getElementById("assignmentTitle");
+
+    const instructionsInput =
+        document.getElementById("assignmentInstructions");
+
+    const dueDateInput =
+        document.getElementById("assignmentDueDate");
+
+    const fileInput =
+        document.getElementById("assignmentFile");
+
+    let fileData = "";
+    let fileName = "";
+
+    try {
+        const teacherLoggedIn =
+            sessionStorage.getItem("teacherLoggedIn");
+
+        if (teacherLoggedIn !== "true") {
+            window.location.replace(
+                "teacher-login.html"
+            );
+            return;
+        }
+    } catch (error) {
+        console.error(error);
+        window.location.replace(
+            "teacher-login.html"
+        );
+        return;
+    }
+
+    if (!className || !subjectName) {
+        locationBox.textContent =
+            "Choose a subject and class from the teacher dashboard first.";
+        form.hidden = true;
+        return;
+    }
+
+    locationBox.textContent =
+        "You are posting work for: " +
+        subjectName + " — " + className;
+
+    fileInput.addEventListener(
+        "change",
+        function () {
+            const selectedFile =
+                fileInput.files[0];
+
+            if (!selectedFile) {
+                fileData = "";
+                fileName = "";
+                return;
+            }
+
+            const allowedTypes = [
+                "application/pdf",
+                "application/msword",
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "application/vnd.ms-powerpoint",
+                "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+                "image/jpeg",
+                "image/png"
+            ];
+
+            if (
+                !allowedTypes.includes(
+                    selectedFile.type
+                )
+            ) {
+                alert(
+                    "Please attach a PDF, Word, PowerPoint, JPG or PNG file."
+                );
+
+                fileInput.value = "";
+                fileData = "";
+                fileName = "";
+                return;
+            }
+
+            if (
+                selectedFile.size >
+                8 * 1024 * 1024
+            ) {
+                alert(
+                    "The file is too large. Please attach a file smaller than 8 MB."
+                );
+
+                fileInput.value = "";
+                fileData = "";
+                fileName = "";
+                return;
+            }
+
+            fileName = selectedFile.name;
+
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                fileData = event.target.result;
+            };
+
+            reader.onerror = function () {
+                alert(
+                    "The file could not be read. Please try again."
+                );
+
+                fileInput.value = "";
+                fileData = "";
+                fileName = "";
+            };
+
+            reader.readAsDataURL(selectedFile);
+        }
+    );
+
+    form.addEventListener(
+        "submit",
+        function (event) {
+            event.preventDefault();
+
+            const title =
+                titleInput.value.trim();
+
+            const instructions =
+                instructionsInput.value.trim();
+
+            const dueDate =
+                dueDateInput.value;
+
+            if (!title) {
+                alert(
+                    "Please enter the assignment title."
+                );
+                return;
+            }
+
+            if (!instructions) {
+                alert(
+                    "Please enter the instructions."
+                );
+                return;
+            }
+
+            if (!dueDate) {
+                alert(
+                    "Please choose the due date."
+                );
+                return;
+            }
+
+            if (!fileData) {
+                alert(
+                    "Please wait for the file to finish loading, or attach the assignment paper."
+                );
+                return;
+            }
+
+            let assignments;
+
+            try {
+                assignments = JSON.parse(
+                    localStorage.getItem(
+                        "assignments"
+                    )
+                ) || [];
+            } catch (error) {
+                console.error(error);
+                assignments = [];
+            }
+
+            const teacherName =
+                sessionStorage.getItem(
+                    "teacherName"
+                ) || "Teacher";
+
+            const teacherEmail =
+                sessionStorage.getItem(
+                    "teacherEmail"
+                ) || "";
+
+            const newAssignment = {
+                id: Date.now(),
+                teacherName: teacherName,
+                teacherEmail: teacherEmail,
+                className: className,
+                subjectName: subjectName,
+                title: title,
+                instructions: instructions,
+                dueDate: dueDate,
+                fileName: fileName,
+                fileData: fileData,
+                datePosted:
+                    new Date().toLocaleString()
+            };
+
+            assignments.push(newAssignment);
+
+            try {
+                localStorage.setItem(
+                    "assignments",
+                    JSON.stringify(assignments)
+                );
+            } catch (error) {
+                console.error(error);
+
+                alert(
+                    "The assignment could not be saved. The file may be too large for browser storage. Try a smaller file."
+                );
+
+                return;
+            }
+
+            alert(
+                "Assignment posted successfully."
+            );
+
+            window.location.href =
+                "teacher-dashboard.html";
+        }
+    );
+})();
+</script>
+
+</body>
+</html>

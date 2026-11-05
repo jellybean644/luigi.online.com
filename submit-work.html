@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Submit Work | Luigi Giussani High School</title>
+
+    <style>
+        :root {
+            --navy: #090936;
+            --primary: #176b87;
+            --primary-dark: #10516a;
+            --gold: #f4b942;
+            --background: #f3f7fb;
+            --text: #17283b;
+            --muted: #607286;
+            --border: #dfe8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--background);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        .container {
+            width: min(900px, calc(100% - 36px));
+            margin-inline: auto;
+        }
+
+        /* HEADER */
+
+        .site-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            min-height: 96px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--navy);
+        }
+
+        .logo-icon {
+            display: grid;
+            place-items: center;
+            width: 58px;
+            height: 58px;
+            flex-shrink: 0;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+
+        .brand-name {
+            display: block;
+            font-size: 1rem;
+            font-weight: 800;
+            line-height: 1.25;
+        }
+
+        .brand-subtitle {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+        }
+
+        .navigation {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--muted);
+        }
+
+        .navigation a:hover {
+            color: var(--primary);
+        }
+
+        /* BANNER */
+
+        .banner {
+            padding: 48px 0;
+            color: var(--white);
+            background: linear-gradient(
+                120deg,
+                var(--navy),
+                var(--primary)
+            );
+        }
+
+        .eyebrow {
+            margin: 0 0 10px;
+            color: var(--gold);
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+        }
+
+        .banner h1 {
+            margin: 0 0 10px;
+            font-size: clamp(1.9rem, 5vw, 3rem);
+            line-height: 1.15;
+        }
+
+        .banner p {
+            margin: 0;
+            color: #e1eef8;
+        }
+
+        /* FORM */
+
+        main {
+            padding: 35px 0 60px;
+        }
+
+        .assignment-details {
+            padding: 22px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--gold);
+            border-radius: 12px;
+            background: var(--white);
+            box-shadow: 0 8px 24px rgba(16, 40, 65, 0.05);
+        }
+
+        .assignment-details h2 {
+            margin: 0 0 8px;
+            color: var(--primary-dark);
+            overflow-wrap: anywhere;
+        }
+
+        .assignment-details p {
+            margin: 5px 0;
+        }
+
+        .assignment-details .instructions {
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+
+        .submission-card {
+            padding: 30px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--white);
+            box-shadow: 0 8px 24px rgba(16, 40, 65, 0.05);
+        }
+
+        .submission-card h2 {
+            margin: 0 0 18px;
+            color: var(--navy);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+
+        .optional-text {
+            font-weight: normal;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        input[type="text"],
+        textarea,
+        input[type="file"] {
+            display: block;
+            width: 100%;
+            padding: 13px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #c7d5e2;
+            border-radius: 11px;
+            background: var(--white);
+            color: var(--text);
+        }
+
+        textarea {
+            min-height: 170px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: 3px solid #d0e8f2;
+            border-color: var(--primary);
+        }
+
+        .file-help {
+            margin: -12px 0 20px;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .submit-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 10px;
+            background: var(--primary);
+            color: var(--white);
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background: var(--primary-dark);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: var(--primary);
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .status-message {
+            padding: 16px 20px;
+            margin-bottom: 22px;
+            border-left: 4px solid var(--gold);
+            border-radius: 9px;
+            background: #fff7e4;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            padding: 25px 18px;
+            color: #ffffff;
+            background: var(--navy);
+            text-align: center;
+            font-size: 0.88rem;
+        }
+
+        @media (max-width: 650px) {
+            .header-inner {
+                flex-wrap: wrap;
+                padding: 14px 0;
+            }
+
+            .navigation {
+                width: 100%;
+                gap: 14px;
+            }
+
+            .submission-card {
+                padding: 20px;
+            }
+
+            .logo-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .brand-name {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+
+        <a href="index.html" class="brand">
+            <span class="logo-icon">LGHS</span>
+
+            <span>
+                <span class="brand-name">
+                    Luigi Giussani High School
+                </span>
+
+                <span class="brand-subtitle">
+                    SCHOOL WEBSITE &amp; ASSIGNMENT PORTAL
+                </span>
+            </span>
+        </a>
+
+        <nav class="navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="classes.html">Classes</a>
+            <a href="teacher-login.html">Teacher Login</a>
+        </nav>
+
+    </div>
+</header>
+
+<section class="banner">
+    <div class="container">
+        <p class="eyebrow">STUDENT PORTAL</p>
+
+        <h1>Submit Your Work</h1>
+
+        <p>
+            Type your answer, upload your completed work,
+            or do both.
+        </p>
+    </div>
+</section>
+
+<main class="container">
+
+    <div
+        id="assignmentDetails"
+        class="assignment-details"
+    >
+        Loading assignment details...
+    </div>
+
+    <div id="submissionBox" class="submission-card" hidden>
+
+        <h2>Enter your work</h2>
+
+        <form
+            id="submissionForm"
+            novalidate
+        >
+
+            <label for="studentName">
+                Your full name
+            </label>
+
+            <input
+                type="text"
+                id="studentName"
+                placeholder="Enter your full name"
+                autocomplete="name"
+            >
+
+            <label for="studentAnswer">
+                Your answer
+            </label>
+
+            <textarea
+                id="studentAnswer"
+                placeholder="Type your answer here"
+            ></textarea>
+
+            <label for="studentFile">
+                Upload your work
+                <span class="optional-text">
+                    (Word, PDF, JPG or PNG — optional)
+                </span>
+            </label>
+
+            <input
+                type="file"
+                id="studentFile"
+                accept=".doc,.docx,.pdf,.jpg,.jpeg,.png"
+            >
+
+            <p class="file-help">
+                You may type your answer, upload a document,
+                or do both. Maximum file size: 2 MB.
+            </p>
+
+            <button
+                type="submit"
+                class="submit-button"
+            >
+                Submit Work
+            </button>
+
+        </form>
+
+    </div>
+
+    <div
+        id="errorMessage"
+        class="status-message"
+        hidden
+    >
+        Assignment not found. Please return to your class
+        and open the assignment again.
+    </div>
+
+    <a
+        id="backLink"
+        href="classes.html"
+        class="back-link"
+    >
+        ← Back to classes
+    </a>
+
+</main>
+
+<footer class="footer">
+    LUIGI GIUSSANI HIGH SCHOOL — Assignment Portal
+</footer>
+
+<script>
+(function () {
+    "use strict";
+
+    const detailsBox =
+        document.getElementById("assignmentDetails");
+
+    const submissionBox =
+        document.getElementById("submissionBox");
+
+    const errorMessage =
+        document.getElementById("errorMessage");
+
+    const backLink =
+        document.getElementById("backLink");
+
+    const form =
+        document.getElementById("submissionForm");
+
+    let currentAssignment = null;
+
+    try {
+        const savedAssignment = localStorage.getItem(
+            "currentAssignment"
+        );
+
+        currentAssignment = savedAssignment
+            ? JSON.parse(savedAssignment)
+            : null;
+    } catch (error) {
+        console.error(error);
+        currentAssignment = null;
+    }
+
+    if (!currentAssignment) {
+        detailsBox.hidden = true;
+        submissionBox.hidden = true;
+        errorMessage.hidden = false;
+        return;
+    }
+
+    const subjectName =
+        currentAssignment.subjectName ||
+        currentAssignment.subject ||
+        "Subject";
+
+    const className =
+        currentAssignment.className || "";
+
+    detailsBox.innerHTML = "";
+
+    const subjectLine = document.createElement("p");
+    subjectLine.innerHTML =
+        "<strong>Subject:</strong> " +
+        subjectName +
+        (className ? " — " + className : "");
+
+    const titleHeading = document.createElement("h2");
+    titleHeading.textContent =
+        currentAssignment.title || "Untitled assignment";
+
+    const dueLine = document.createElement("p");
+    dueLine.innerHTML =
+        "<strong>Due:</strong> " +
+        (currentAssignment.dueDate || "Not specified");
+
+    const teacherLine = document.createElement("p");
+    teacherLine.innerHTML =
+        "<strong>Posted by:</strong> " +
+        (currentAssignment.teacherName || "Teacher");
+
+    const instructions = document.createElement("p");
+    instructions.className = "instructions";
+    instructions.textContent =
+        currentAssignment.instructions || "";
+
+    detailsBox.append(
+        titleHeading,
+        subjectLine,
+        dueLine,
+        teacherLine,
+        instructions
+    );
+
+    if (className) {
+        backLink.href =
+            "class.html?class=" +
+            encodeURIComponent(className);
+    }
+
+    submissionBox.hidden = false;
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const studentName =
+            document
+                .getElementById("studentName")
+                .value.trim();
+
+        const studentAnswer =
+            document
+                .getElementById("studentAnswer")
+                .value.trim();
+
+        const fileInput =
+            document.getElementById("studentFile");
+
+        const selectedFile = fileInput.files[0];
+
+        if (!studentName) {
+            alert("Please enter your full name.");
+            return;
+        }
+
+        if (!studentAnswer && !selectedFile) {
+            alert(
+                "Please type your answer or upload your work."
+            );
+            return;
+        }
+
+        if (selectedFile) {
+            const allowedTypes = [
+                "application/msword",
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "application/pdf",
+                "image/jpeg",
+                "image/png"
+            ];
+
+            if (
+                !allowedTypes.includes(selectedFile.type)
+            ) {
+                alert(
+                    "Please upload a Word document, PDF, JPG or PNG file."
+                );
+                return;
+            }
+
+            if (
+                selectedFile.size >
+                6* 6000 * 6000
+            ) {
+                alert(
+                    "The file is too large. Please upload a file smaller than 8 MB."
+                );
+                return;
+            }
+        }
+
+        function saveSubmission(fileData, fileName) {
+            let submissions;
+
+            try {
+                submissions = JSON.parse(
+                    localStorage.getItem(
+                        "studentSubmissions"
+                    )
+                ) || [];
+            } catch (error) {
+                console.error(error);
+                submissions = [];
+            }
+
+            const newSubmission = {
+                id: Date.now(),
+                studentName: studentName,
+                assignmentId: currentAssignment.id,
+                assignmentTitle:
+                    currentAssignment.title,
+                subject: subjectName,
+                className: className,
+                teacherEmail:
+                    currentAssignment.teacherEmail || "",
+                answer: studentAnswer,
+                fileName: fileName || "",
+                fileData: fileData || "",
+                time: new Date().toLocaleString()
+            };
+
+            submissions.push(newSubmission);
+
+            localStorage.setItem(
+                "studentSubmissions",
+                JSON.stringify(submissions)
+            );
+
+            saveTeacherNotification();
+
+            alert(
+                "Your work has been submitted successfully."
+            );
+
+            const returnAddress =
+                "subject.html?class=" +
+                encodeURIComponent(className) +
+                "&subject=" +
+                encodeURIComponent(subjectName);
+
+            window.location.href = returnAddress;
+        }
+
+        function saveTeacherNotification() {
+            let notifications;
+
+            try {
+                notifications = JSON.parse(
+                    localStorage.getItem(
+                        "teacherNotifications"
+                    )
+                ) || [];
+            } catch (error) {
+                console.error(error);
+                notifications = [];
+            }
+
+            notifications.push({
+                teacherEmail:
+                    currentAssignment.teacherEmail || "",
+                studentName: studentName,
+                subject: subjectName,
+                className: className,
+                assignmentTitle:
+                    currentAssignment.title ||
+                    "Untitled assignment",
+                time: new Date().toLocaleString(),
+                read: false
+            });
+
+            localStorage.setItem(
+                "teacherNotifications",
+                JSON.stringify(notifications)
+            );
+        }
+
+        if (!selectedFile) {
+            saveSubmission("", "");
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+            saveSubmission(
+                event.target.result,
+                selectedFile.name
+            );
+        };
+
+        reader.onerror = function () {
+            alert(
+                "The file could not be read. Please try again."
+            );
+        };
+
+        reader.readAsDataURL(selectedFile);
+    });
+})();
+</script>
+
+</body>
+</html>

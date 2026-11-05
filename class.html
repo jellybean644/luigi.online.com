@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Portal - Luigi Giussani High School</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container nav-container">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">LGHS</span>
+            <span>Luigi Giussani High School</span>
+        </a>
+
+        <button class="menu-button" onclick="toggleMenu()">☰</button>
+
+        <nav id="navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="classes.html">Classes</a>
+            <a href="teacher-login.html">Teacher Login</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+<section class="page-banner">
+    <div class="container">
+        <p class="small-title">CLASS PORTAL</p>
+        <h1 id="classTitle">Class Portal</h1>
+        <p>Enter the code given to students in your class.</p>
+    </div>
+</section>
+
+<section class="container section narrow-section">
+
+    <div id="codeBox" class="login-card">
+        <div class="login-icon">🔐</div>
+        <h2 id="accessTitle">Access Class</h2>
+        <p>Enter your special class code to continue.</p>
+
+        <div id="codeError" class="error-message hidden">
+            The code is not correct. Please try again.
+        </div>
+
+        <form onsubmit="checkClassCode(event)">
+            <label for="classCode">Class code</label>
+            <input
+                type="password"
+                id="classCode"
+                placeholder="Enter class code"
+                required
+            >
+
+            <button type="submit" class="button primary-button full-width">
+                Access Class
+            </button>
+        </form>
+    </div>
+
+    <div id="subjectsBox" class="hidden">
+        <div class="section-heading centered">
+            <p class="small-title">CLASS SUBJECTS</p>
+            <h2 id="subjectsTitle">Choose a subject</h2>
+        </div>
+
+        <div class="subject-grid">
+            <a href="#" class="subject-card" onclick="openSubject('English')">
+                <div class="subject-icon">📘</div>
+                <h3>English</h3>
+                <p>View English work.</p>
+            </a>
+
+            <a href="#" class="subject-card" onclick="openSubject('Mathematics')">
+                <div class="subject-icon">📐</div>
+                <h3>Mathematics</h3>
+                <p>View Mathematics work.</p>
+            </a>
+
+            <a href="#" class="subject-card" onclick="openSubject('Physics')">
+                <div class="subject-icon">⚛️</div>
+                <h3>Physics</h3>
+                <p>View Physics work.</p>
+            </a>
+
+            <a href="#" class="subject-card" onclick="openSubject('Chemistry')">
+                <div class="subject-icon">🧪</div>
+                <h3>Chemistry</h3>
+                <p>View Chemistry work.</p>
+            </a>
+
+            <a href="#" class="subject-card" onclick="openSubject('Biology')">
+                <div class="subject-icon">🧬</div>
+                <h3>Biology</h3>
+                <p>View Biology work.</p>
+            </a>
+
+            <a href="#" class="subject-card" onclick="openSubject('Geography')">
+                <div class="subject-icon">🌍</div>
+                <h3>Geography</h3>
+                <p>View Geography work.</p>
+            </a>
+
+            <a href="#" class="subject-card" onclick="openSubject('History and Political Education')">
+                <div class="subject-icon">🏛️</div>
+                <h3>History</h3>
+                <p>View History work.</p>
+            </a>
+
+            <a href="#" class="subject-card" onclick="openSubject('Kiswahili')">
+                <div class="subject-icon">🗣️</div>
+                <h3>Kiswahili</h3>
+                <p>View Kiswahili work.</p>
+            </a>
+
+            <a href="#" class="subject-card" onclick="openSubject('Agriculture')">
+                <div class="subject-icon">🌾</div>
+                <h3>Agriculture</h3>
+                <p>View Agriculture work.</p>
+            </a>
+
+            <a href="#" class="subject-card" onclick="openSubject('Literature in English')">
+                <div class="subject-icon">📚</div>
+                <h3>Literature</h3>
+                <p>View Literature work.</p>
+            </a>
+
+            <a href="#" class="subject-card" onclick="openSubject('Entrepreneurship')">
+                <div class="subject-icon">💼</div>
+                <h3>Entrepreneurship</h3>
+                <p>View Entrepreneurship work.</p>
+            </a>
+
+            <a href="#" class="subject-card" onclick="openSubject('ICT')">
+                <div class="subject-icon">💻</div>
+                <h3>ICT</h3>
+                <p>View ICT work.</p>
+            </a>
+
+            <a href="#" class="subject-card" onclick="openSubject('Religious Education')">
+                <div class="subject-icon">🕊️</div>
+                <h3>Religious Education</h3>
+                <p>View Religious Education work.</p>
+            </a>
+
+            <a href="#" class="subject-card" onclick="openSubject('Physical Education')">
+                <div class="subject-icon">⚽</div>
+                <h3>Physical Education</h3>
+                <p>View Physical Education work.</p>
+            </a>
+
+            <a href="#" class="subject-card" onclick="openSubject('Art and Design')">
+                <div class="subject-icon">🎨</div>
+                <h3>Art and Design</h3>
+                <p>View Art and Design work.</p>
+            </a>
+
+            <a href="#" class="subject-card" onclick="openSubject('General Paper')">
+                <div class="subject-icon">📝</div>
+                <h3>General Paper</h3>
+                <p>View General Paper work.</p>
+            </a>
+        </div>
+    </div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+    <div class="container footer-grid">
+        <div>
+            <h3>Luigi Giussani High School</h3>
+            <p>Quality education for a brighter future.</p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="classes.html">Classes</a>
+            <a href="teacher-login.html">Teacher Login</a>
+        </div>
+
+        <div>
+            <h3>Contact</h3>
+            <p>Kampala, Uganda</p>
+            <p>+256 700 000000</p>
+        </div>
+    </div>
+
+    <div class="copyright">
+       Luigi Giussani High School. With Our Hands But with HIS strength.
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

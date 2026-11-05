@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>About Us | Luigi Giussani High School</title>
+
+    <style>
+        :root {
+            --navy: #090936;
+            --primary: #176b87;
+            --primary-dark: #10516a;
+            --gold: #f4b942;
+            --background: #f3f7fb;
+            --white: #ffffff;
+            --text: #17283b;
+            --muted: #607286;
+            --border: #dfe8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--background);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .container {
+            width: min(1150px, calc(100% - 36px));
+            margin-inline: auto;
+        }
+
+        /* HEADER */
+
+        .site-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            min-height: 96px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--navy);
+        }
+
+        .logo-icon {
+            display: grid;
+            place-items: center;
+            width: 58px;
+            height: 58px;
+            flex-shrink: 0;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+
+        .brand-name {
+            display: block;
+            font-size: 1rem;
+            font-weight: 800;
+            line-height: 1.25;
+        }
+
+        .brand-subtitle {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+        }
+
+        .navigation {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--muted);
+        }
+
+        .navigation a:hover,
+        .navigation a[aria-current="page"] {
+            color: var(--primary);
+        }
+
+        /* HERO */
+
+        .about-hero {
+            position: relative;
+            padding: 95px 0;
+            color: var(--white);
+            background:
+                linear-gradient(
+                    100deg,
+                    rgba(9, 9, 54, 0.88),
+                    rgba(23, 107, 135, 0.72)
+                ),
+                url("E:\kenneth\images\images.jpg") center/cover no-repeat;
+        }
+
+        .about-hero .eyebrow {
+            margin: 0 0 12px;
+            color: var(--gold);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+        }
+
+        .about-hero h1 {
+            margin: 0 0 16px;
+            max-width: 760px;
+            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            line-height: 1.1;
+        }
+
+        .about-hero p {
+            max-width: 680px;
+            margin: 0;
+            font-size: 1.1rem;
+            color: #eaf4fb;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 30px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 24px;
+            border-radius: 10px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .gold-button {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .gold-button:hover {
+            background: #ffd766;
+        }
+
+        .light-button {
+            border: 2px solid rgba(255, 255, 255, 0.75);
+            color: var(--white);
+        }
+
+        .light-button:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* INTRODUCTION */
+
+        .intro-section {
+            padding: 70px 0;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .section-eyebrow {
+            margin: 0 0 10px;
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+        }
+
+        .intro-section h2 {
+            margin: 0 0 18px;
+            color: var(--navy);
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            line-height: 1.2;
+        }
+
+        .intro-section p {
+            margin: 0 0 18px;
+            color: var(--muted);
+        }
+
+        .highlight-card {
+            padding: 32px;
+            border-radius: 20px;
+            color: var(--white);
+            background: linear-gradient(
+                135deg,
+                var(--navy),
+                var(--primary)
+            );
+            box-shadow: 0 15px 35px rgba(9, 9, 54, 0.18);
+        }
+
+        .highlight-card h3 {
+            margin: 0 0 8px;
+            color: var(--gold);
+            font-size: 1.15rem;
+        }
+
+        .highlight-card p {
+            margin: 0 0 22px;
+            color: #eaf4fb;
+        }
+
+        .highlight-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* VALUES */
+
+        .values-section {
+            padding: 20px 0 75px;
+        }
+
+        .values-heading {
+            max-width: 700px;
+            margin: 0 auto 35px;
+            text-align: center;
+        }
+
+        .values-heading h2 {
+            margin: 0 0 10px;
+            color: var(--navy);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+        }
+
+        .values-heading p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(180px, 1fr)
+            );
+            gap: 18px;
+        }
+
+        .value-card {
+            padding: 28px 18px;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: var(--white);
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(16, 40, 65, 0.06);
+            transition: transform 0.25s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .value-icon {
+            display: grid;
+            place-items: center;
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 14px;
+            border-radius: 50%;
+            background: #eaf5fb;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .value-card h3 {
+            margin: 0;
+            color: var(--navy);
+            font-size: 1.05rem;
+        }
+
+        /* CALL TO ACTION */
+
+        .join-section {
+            padding: 0 0 75px;
+        }
+
+        .join-card {
+            padding: 50px 35px;
+            border-radius: 24px;
+            color: var(--white);
+            text-align: center;
+            background: linear-gradient(
+                120deg,
+                var(--primary-dark),
+                var(--navy)
+            );
+            box-shadow: 0 18px 40px rgba(9, 9, 54, 0.22);
+        }
+
+        .join-card h2 {
+            margin: 0 0 12px;
+            font-size: clamp(1.7rem, 4vw, 2.4rem);
+        }
+
+        .join-card p {
+            max-width: 640px;
+            margin: 0 auto 25px;
+            color: #eaf4fb;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            padding: 45px 0 0;
+            color: #d9e4f2;
+            background: var(--navy);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(220px, 1fr)
+            );
+            gap: 30px;
+            padding-bottom: 35px;
+        }
+
+        .footer h3 {
+            margin: 0 0 12px;
+            color: var(--white);
+        }
+
+        .footer a {
+            display: block;
+            margin-bottom: 8px;
+            color: #d9e4f2;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: var(--gold);
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        .copyright {
+            padding: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* SMALL SCREENS */
+
+        @media (max-width: 900px) {
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-inner {
+                flex-wrap: wrap;
+                padding: 15px 0;
+            }
+
+            .navigation {
+                width: 100%;
+                gap: 14px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .about-hero {
+                padding: 65px 0;
+            }
+
+            .intro-section,
+            .values-section,
+            .join-section {
+                padding-top: 20px;
+                padding-bottom: 45px;
+            }
+
+            .highlight-card,
+            .join-card {
+                padding: 28px 20px;
+            }
+
+            .logo-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .brand-name {
+                font-size: 0.9rem;
+            }
+
+            .brand-subtitle {
+                font-size: 0.68rem;
+            }
+
+            .navigation {
+                width: 100%;
+                gap: 14px;
+            }
+
+            .navigation a {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+
+        <a href="index.html" class="brand">
+            <span class="logo-icon">LGHS</span>
+
+            <span>
+                <span class="brand-name">
+                    Luigi Giussani High School
+                </span>
+
+                <span class="brand-subtitle">
+                    SCHOOL WEBSITE &amp; ASSIGNMENT PORTAL
+                </span>
+            </span>
+        </a>
+
+        <nav class="navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a
+                href="about.html"
+                aria-current="page"
+            >
+                About
+            </a>
+            <a href="classes.html">Classes</a>
+            <a href="school-team.html">School Team</a>
+            <a href="teacher-login.html">Teacher Login</a>
+        </nav>
+
+    </div>
+</header>
+
+<section class="about-hero">
+    <div class="container">
+
+        <p class="eyebrow">
+            ABOUT OUR SCHOOL
+        </p>
+
+        <h1>
+            Building a brighter future,
+            one learner at a time.
+        </h1>
+
+        <p>
+            Luigi Giussani High School is a caring learning
+            community where students grow in knowledge,
+            discipline, confidence and character.
+        </p>
+
+        <div class="hero-actions">
+            <a
+                href="classes.html"
+                class="button gold-button"
+            >
+                Explore Classes
+            </a>
+
+            <a
+                href="school-team.html"
+                class="button light-button"
+            >
+                Meet Our Team
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<main>
+
+    <section class="intro-section">
+        <div class="container">
+
+            <div class="intro-grid">
+
+                <div>
+                    <p class="section-eyebrow">
+                        WHO WE ARE
+                    </p>
+
+                    <h2>
+                        A school where every learner
+                        can succeed
+                    </h2>
+
+                    <p>
+                        Luigi Giussani High School is committed
+                        to providing quality education in a safe,
+                        caring and inspiring environment.
+                    </p>
+
+                    <p>
+                        We combine academic education with
+                        discipline, creativity, teamwork and
+                        leadership development.
+                    </p>
+
+                    <p>
+                        Our learners are encouraged to discover
+                        their gifts, ask meaningful questions,
+                        work hard and become responsible members
+                        of society.
+                    </p>
+                </div>
+
+                <div class="highlight-card">
+
+                    <h3>Our Vision</h3>
+
+                    <p>
+                        A model school in Africa educating persons
+                        who are aware of their infinite worth,
+                        responsible, and contributing to the good
+                        of society with their lives.
+                    </p>
+
+                    <h3>Our Mission</h3>
+
+                    <p>
+                        To journey together, to help every person
+                        be aware of their infinite worth and
+                        uniqueness. We educate reason to recognise
+                        the true meaning of reality and freedom to
+                        adhere to it, facing with certainty and
+                        hope every circumstance of life.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="container">
+
+            <div class="values-heading">
+                <p class="section-eyebrow">
+                    OUR VALUES
+                </p>
+
+                <h2>
+                    The values that guide our school
+                </h2>
+
+                <p>
+                    These values help our learners grow academically,
+                    socially and morally.
+                </p>
+            </div>
+
+            <div class="values-grid">
+
+                <div class="value-card">
+                    <div class="value-icon">🌟</div>
+                    <h3>Hope</h3>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">✅</div>
+                    <h3>Truth</h3>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🕊️</div>
+                    <h3>Freedom</h3>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🧠</div>
+                    <h3>Reason</h3>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🔍</div>
+                    <h3>Wonder</h3>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🎨</div>
+                    <h3>Beauty</h3>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Belongingness</h3>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">👁️</div>
+                    <h3>Awareness</h3>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">⚖️</div>
+                    <h3>Realism</h3>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="join-section">
+        <div class="container">
+
+            <div class="join-card">
+
+                <h2>
+                    Join a school that believes
+                    in every learner
+                </h2>
+
+                <p>
+                    At Luigi Giussani High School, students are
+                    supported to learn confidently, live responsibly
+                    and prepare for a successful future.
+                </p>
+
+                <a
+                    href="classes.html"
+                    class="button gold-button"
+                >
+                    View Classes and Assignments
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="container footer-grid">
+
+        <div>
+            <h3>Luigi Giussani High School</h3>
+
+            <p>
+                Quality education for a brighter future.
+            </p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+
+            <a href="index.html">Home</a>
+            <a href="classes.html">Classes</a>
+            <a href="school-team.html">School Team</a>
+            <a href="teacher-login.html">Teacher Login</a>
+        </div>
+
+        <div>
+            <h3>Contact</h3>
+
+            <p>Kampala, Uganda</p>
+            <p>+256 783464627</p>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        Luigi Giussani High School.
+        With Our Hands But with HIS strength.
+    </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

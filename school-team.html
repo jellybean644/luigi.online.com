@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>School Team | Luigi Giussani High School</title>
+
+    <style>
+        :root {
+            --navy: #090936;
+            --primary: #176b87;
+            --primary-dark: #10516a;
+            --gold: #f4b942;
+            --background: #f3f7fb;
+            --white: #ffffff;
+            --text: #17283b;
+            --muted: #607286;
+            --border: #dfe8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--background);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 36px));
+            margin-inline: auto;
+        }
+
+        /* HEADER */
+
+        .site-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            min-height: 96px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--navy);
+        }
+
+        .logo-icon {
+            display: grid;
+            place-items: center;
+            width: 58px;
+            height: 58px;
+            flex-shrink: 0;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+
+        .brand-name {
+            display: block;
+            font-size: 1rem;
+            font-weight: 800;
+            line-height: 1.25;
+        }
+
+        .brand-subtitle {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+        }
+
+        .navigation {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--muted);
+        }
+
+        .navigation a:hover,
+        .navigation a[aria-current="page"] {
+            color: var(--primary);
+        }
+
+        /* HERO */
+
+        .team-hero {
+            position: relative;
+            padding: 90px 0;
+            color: var(--white);
+            text-align: center;
+            background:
+                linear-gradient(
+                    100deg,
+                    rgba(9, 9, 54, 0.90),
+                    rgba(23, 107, 135, 0.75)
+                ),
+                url("images/school1.jpg")
+                center/cover no-repeat;
+        }
+
+        .team-hero .eyebrow {
+            margin: 0 0 12px;
+            color: var(--gold);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+        }
+
+        .team-hero h1 {
+            margin: 0 0 15px;
+            font-size: clamp(2.1rem, 6vw, 3.6rem);
+            line-height: 1.1;
+        }
+
+        .team-hero p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #eaf4fb;
+            font-size: 1.08rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 30px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 24px;
+            border-radius: 10px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .gold-button {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .gold-button:hover {
+            background: #ffd766;
+        }
+
+        .light-button {
+            border: 2px solid rgba(255, 255, 255, 0.75);
+            color: var(--white);
+        }
+
+        .light-button:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* MAIN SECTIONS */
+
+        .team-main {
+            padding: 60px 0 70px;
+        }
+
+        .section-heading {
+            max-width: 720px;
+            margin: 0 auto 35px;
+            text-align: center;
+        }
+
+        .section-eyebrow {
+            margin: 0 0 10px;
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+        }
+
+        .section-heading h2 {
+            margin: 0 0 10px;
+            color: var(--navy);
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            line-height: 1.2;
+        }
+
+        .section-heading p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        /* TEACHER CARDS */
+
+        .teacher-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(250px, 1fr)
+            );
+            gap: 25px;
+        }
+
+        .teacher-card {
+            position: relative;
+            padding: 34px 24px 28px;
+            border: none;
+            border-radius: 24px;
+            background: linear-gradient(
+                160deg,
+                #0d4f66,
+                #090936
+            );
+            color: #ffffff;
+            text-align: center;
+            box-shadow:
+                0 18px 38px rgba(9, 9, 54, 0.22),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .teacher-card::before {
+            content: "";
+            position: absolute;
+            top: -55px;
+            right: -55px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(244, 185, 66, 0.16);
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-9px);
+            box-shadow:
+                0 24px 48px rgba(9, 9, 54, 0.30),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+        }
+
+        .teacher-photo {
+            position: relative;
+            width: 145px;
+            height: 145px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.85);
+            background: #edf1f8;
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+        }
+
+        .teacher-card h3 {
+            position: relative;
+            margin: 17px 0 8px;
+            color: #ffffff;
+            font-size: 1.12rem;
+            line-height: 1.3;
+            overflow-wrap: anywhere;
+        }
+
+        .teacher-role {
+            position: relative;
+            display: inline-block;
+            margin: 0 0 15px;
+            padding: 6px 16px;
+            border-radius: 30px;
+            background: var(--gold);
+            color: var(--navy);
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .teacher-subjects {
+            position: relative;
+            margin: 0;
+            padding: 11px 14px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.10);
+            color: #eaf4fb;
+            font-size: 0.9rem;
+        }
+
+        /* PREFECT SLIDESHOW */
+
+        .prefect-section {
+            margin-top: 70px;
+        }
+
+        .prefect-slideshow {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 35px 30px;
+            text-align: center;
+            color: var(--white);
+            border-radius: 24px;
+            background: linear-gradient(
+                135deg,
+                var(--primary-dark),
+                var(--navy)
+            );
+            box-shadow: 0 18px 40px rgba(9, 9, 54, 0.22);
+        }
+
+        .prefect-slide[hidden] {
+            display: none;
+        }
+
+        .prefect-photo {
+            width: min(270px, 100%);
+            height: 300px;
+            object-fit: cover;
+            border-radius: 18px;
+            border: 5px solid rgba(255, 255, 255, 0.18);
+            background: #edf1f8;
+        }
+
+        .prefect-slide h3 {
+            margin: 18px 0 8px;
+            color: var(--white);
+            font-size: 1.6rem;
+            overflow-wrap: anywhere;
+        }
+
+        .prefect-title {
+            display: inline-block;
+            padding: 7px 20px;
+            border-radius: 30px;
+            background: var(--gold);
+            color: var(--navy);
+            font-weight: 800;
+        }
+
+        .slideshow-controls {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 26px;
+        }
+
+        .slideshow-controls button {
+            padding: 11px 17px;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 9px;
+            background: rgba(255, 255, 255, 0.12);
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        .slideshow-controls button:hover {
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .slide-position {
+            margin: 18px 0 0;
+            color: #eaf4fb;
+        }
+
+        .prefect-dots {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 16px;
+        }
+
+        .prefect-dot {
+            width: 14px;
+            height: 14px;
+            padding: 0;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.35);
+            cursor: pointer;
+        }
+
+        .prefect-dot[aria-current="true"] {
+            background: var(--gold);
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 4px;
+        }
+
+        /* FOOTER */
+
+        .site-footer {
+            padding: 30px 18px;
+            color: #d9e4f2;
+            background: var(--navy);
+            text-align: center;
+        }
+
+        .site-footer p {
+            margin: 5px 0;
+        }
+
+        /* SMALL SCREENS */
+
+        @media (max-width: 900px) {
+            .header-inner {
+                flex-wrap: wrap;
+                padding: 15px 0;
+            }
+
+            .navigation {
+                width: 100%;
+                gap: 14px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .team-hero {
+                padding: 60px 0;
+            }
+
+            .team-main {
+                padding: 35px 0 50px;
+            }
+
+            .prefect-slideshow {
+                padding: 25px 18px;
+            }
+
+            .prefect-photo {
+                height: 270px;
+            }
+
+            .logo-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .brand-name {
+                font-size: 0.9rem;
+            }
+
+            .brand-subtitle {
+                font-size: 0.68rem;
+            }
+
+            .navigation {
+                width: 100%;
+                gap: 14px;
+            }
+
+            .navigation a {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+
+        <a href="index.html" class="brand">
+            <span class="logo-icon">LGHS</span>
+
+            <span>
+                <span class="brand-name">
+                    Luigi Giussani High School
+                </span>
+
+                <span class="brand-subtitle">
+                    SCHOOL WEBSITE &amp; ASSIGNMENT PORTAL
+                </span>
+            </span>
+        </a>
+
+        <nav class="navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="classes.html">Classes</a>
+            <a
+                href="school-team.html"
+                aria-current="page"
+            >
+                School Team
+            </a>
+            <a href="teacher-login.html">Teacher Login</a>
+        </nav>
+
+    </div>
+</header>
+
+<section class="team-hero">
+    <div class="container">
+
+        <p class="eyebrow">
+            OUR SCHOOL TEAM
+        </p>
+
+        <h1>
+            Meet the people who make
+            our school strong
+        </h1>
+
+        <p>
+            Our teachers guide learning, while our prefects
+            lead and serve fellow students.
+        </p>
+
+        <div class="hero-actions">
+            <a
+                href="#teachers"
+                class="button gold-button"
+            >
+                Meet Teachers
+            </a>
+
+            <a
+                href="#prefects"
+                class="button light-button"
+            >
+                Meet Prefects
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<main class="team-main">
+
+    <section id="teachers">
+        <div class="container">
+
+            <div class="section-heading">
+                <p class="section-eyebrow">
+                    OUR TEACHING STAFF
+                </p>
+
+                <h2>Meet Our Teachers</h2>
+
+                <p>
+                    Our teachers guide learners academically,
+                    morally and socially.
+                </p>
+            </div>
+
+            <div class="teacher-grid">
+
+                <!-- TEACHER 1 -->
+                <article class="teacher-card">
+                    <img
+                        src="images/jk.jpg"
+                        alt="Mr Kawuki Micheal"
+                        class="teacher-photo"
+                        loading="lazy"
+                    >
+                    <h3>Mr Kawuki Micheal</h3>
+                    <p class="teacher-role">Head Teacher</p>
+                    <p class="teacher-subjects">
+                        Subject: CRE
+                    </p>
+                </article>
+
+                <!-- TEACHER 2 -->
+                <article class="teacher-card">
+                    <img
+                        src="images/teacher2.jpg"
+                        alt="Mrs Kaigo Betty"
+                        class="teacher-photo"
+                        loading="lazy"
+                    >
+                    <h3>Mrs Kaigo Betty</h3>
+                    <p class="teacher-role">
+                        Deputy Head Teacher
+                    </p>
+                    <p class="teacher-subjects">
+                        Subjects: English and Literature
+                    </p>
+                </article>
+
+                <!-- TEACHER 3 -->
+                <article class="teacher-card">
+                    <img
+                        src="images/teacher3.jpg"
+                        alt="Mrs Bakela Marceline"
+                        class="teacher-photo"
+                        loading="lazy"
+                    >
+                    <h3>Mrs Bakela Marceline</h3>
+                    <p class="teacher-role">
+                        Director of Studies
+                    </p>
+                    <p class="teacher-subjects">
+                        Subjects: HISTORY
+                    </p>
+                </article>
+
+                <!-- TEACHER 4 -->
+                <article class="teacher-card">
+                    <img
+                        src="images/images (1).jpg"
+                        alt="Mr Bamwite Rapheal"
+                        class="teacher-photo"
+                        loading="lazy"
+                    >
+                    <h3>Mr Bamwite Rapheal</h3>
+                    <p class="teacher-role">Teacher</p>
+                    <p class="teacher-subjects">
+                        Subject: Chemistry
+                    </p>
+                </article>
+
+                <!-- TEACHER 5 -->
+                <article class="teacher-card">
+                    <img
+                        src="images/teacher5.jpg"
+                        alt="Mr Kamwesigwa Godfrey"
+                        class="teacher-photo"
+                        loading="lazy"
+                    >
+                    <h3>Mr Kamwesigwa Godfrey</h3>
+                    <p class="teacher-role">
+                        Head of Mathematics and Physics
+                    </p>
+                    <p class="teacher-subjects">
+                        Subjects: Physics and Mathematics
+                    </p>
+                </article>
+
+                <!-- TEACHER 6 -->
+                <article class="teacher-card">
+                    <img
+                        src="E:\Explorer\MAYUNDO\photo 1.JPG"
+                        alt="Teacher Name 6"
+                        class="teacher-photo"
+                        loading="lazy"
+                    >
+                    <h3>Mr OKODO ISAAC</h3>
+                    <p class="teacher-role">
+                        TEACHER
+                    </p>
+                    <p class="teacher-subjects">
+                         Biology
+                    </p>
+                </article>
+
+                <!-- TEACHER 7 -->
+                <article class="teacher-card">
+                    <img
+                        src="images/teacher7.jpg"
+                        alt="Teacher Name 7"
+                        class="teacher-photo"
+                        loading="lazy"
+                    >
+                    <h3>Teacher Name 7</h3>
+                    <p class="teacher-role">ICT Teacher</p>
+                    <p class="teacher-subjects">
+                        Subjects: ICT and Computer Studies
+                    </p>
+                </article>
+
+                <!-- TEACHER 8 -->
+                <article class="teacher-card">
+                    <img
+                        src="images/teacher8.jpg"
+                        alt="Teacher Name 8"
+                        class="teacher-photo"
+                        loading="lazy"
+                    >
+                    <h3>Teacher Name 8</h3>
+                    <p class="teacher-role">
+                        Humanities Teacher
+                    </p>
+                    <p class="teacher-subjects">
+                        Subjects: History and Religious Education
+                    </p>
+                </article>
+
+                <!-- TEACHER 9 -->
+                <article class="teacher-card">
+                    <img
+                        src="images/teacher9.jpg"
+                        alt="Teacher Name 9"
+                        class="teacher-photo"
+                        loading="lazy"
+                    >
+                    <h3>Teacher Name 9</h3>
+                    <p class="teacher-role">
+                        Business Studies Teacher
+                    </p>
+                    <p class="teacher-subjects">
+                        Subjects: Entrepreneurship and Economics
+                    </p>
+                </article>
+
+                <!-- TEACHER 10 -->
+                <article class="teacher-card">
+                    <img
+                        src="images/teacher10.jpg"
+                        alt="Teacher Name 10"
+                        class="teacher-photo"
+                        loading="lazy"
+                    >
+                    <h3>Teacher Name 10</h3>
+                    <p class="teacher-role">
+                        Creative Arts Teacher
+                    </p>
+                    <p class="teacher-subjects">
+                        Subject: Art and Design
+                    </p>
+                </article>
+
+                <!-- TEACHER 11 -->
+                <article class="teacher-card">
+                    <img
+                        src="images/teacher11.jpg"
+                        alt="Teacher Name 11"
+                        class="teacher-photo"
+                        loading="lazy"
+                    >
+                    <h3>Teacher Name 11</h3>
+                    <p class="teacher-role">
+                        Sports Teacher
+                    </p>
+                    <p class="teacher-subjects">
+                        Subject: Physical Education
+                    </p>
+                </article>
+
+                <!-- TEACHER 12 -->
+                <article class="teacher-card">
+                    <img
+                        src="images/teacher12.jpg"
+                        alt="Teacher Name 12"
+                        class="teacher-photo"
+                        loading="lazy"
+                    >
+                    <h3>Teacher Name 12</h3>
+                    <p class="teacher-role">
+                        Class Teacher
+                    </p>
+                    <p class="teacher-subjects">
+                        Subjects: Mathematics and Geography
+                    </p>
+                </article>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="prefects" class="prefect-section">
+        <div class="container">
+
+            <div class="section-heading">
+                <p class="section-eyebrow">
+                    STUDENT LEADERS
+                </p>
+
+                <h2>Our School Prefects</h2>
+
+                <p>
+                    Meet the student leaders who serve
+                    their school community.
+                </p>
+            </div>
+
+            <div
+                class="prefect-slideshow"
+                role="region"
+                aria-label="School prefect slideshow"
+                aria-roledescription="carousel"
+            >
+
+                <!-- PREFECT 1 -->
+                <article class="prefect-slide">
+                    <img
+                        src="E:\kenneth\images\phiona.jpg"
+                        alt="Ainembebazi Phiona"
+                        class="prefect-photo"
+                    >
+                    <h3>Ainembebazi Phiona</h3>
+                    <p class="prefect-title">
+                        Head Prefect
+                    </p>
+                </article>
+
+                <!-- PREFECT 2 -->
+                <article class="prefect-slide" hidden>
+                    <img
+                        src="images/prefect2.jpg"
+                        alt="Tokwiny Benjamin"
+                        class="prefect-photo"
+                    >
+                    <h3>Tokwiny Benjamin</h3>
+                    <p class="prefect-title">
+                        Head of Class Councillors
+                    </p>
+                </article>
+
+                <!-- PREFECT 3 -->
+                <article class="prefect-slide" hidden>
+                    <img
+                        src="E:\kenneth\images\20260923_104419.jpg"
+                        alt="Emitu Joseph"
+                        class="prefect-photo"
+                    >
+                    <h3>Emitu Joseph</h3>
+                    <p class="prefect-title">
+                        Head Boy
+                    </p>
+                </article>
+
+                <!-- PREFECT 4 -->
+                <article class="prefect-slide" hidden>
+                    <img
+                        src="C:\Users\LGHS\Downloads\20260923_103900.jpg"
+                        alt="Namagembe Angella"
+                        class="prefect-photo"
+                    >
+                    <h3>Namagembe Angella</h3>
+                    <p class="prefect-title">
+                        Head Girl
+                    </p>
+                </article>
+
+                <!-- PREFECT 5 -->
+                <article class="prefect-slide" hidden>
+                    <img
+                        src="images/prefect5.jpg"
+                        alt="Kagimu Ronald"
+                        class="prefect-photo"
+                    >
+                    <h3>Kagimu Ronald</h3>
+                    <p class="prefect-title">
+                        Academic Prefect
+                    </p>
+                </article>
+
+                <!-- PREFECT 6 -->
+                <article class="prefect-slide" hidden>
+                    <img
+                        src="E:\kenneth\images\hilda.jpg"
+                        alt="Prefect Name 6"
+                        class="prefect-photo"
+                    >
+                    <h3>ACURO HILDA</h3>
+                    <p class="prefect-title">
+                        ASSISTANT HEALTH Prefect
+                    </p>
+                </article>
+
+                <!-- PREFECT 7 -->
+                <article class="prefect-slide" hidden>
+                    <img
+                        src="C:\Users\LGHS\Downloads\IMG_5047.jpeg"
+                        alt="Ndizeye Enocha"
+                        class="prefect-photo"
+                    >
+                    <h3>Ndizeye Enocha</h3>
+                    <p class="prefect-title">
+                        Sports Prefect
+                    </p>
+                </article>
+
+                <!-- PREFECT 8 -->
+                <article class="prefect-slide" hidden>
+                    <img
+                        src="E:\kenneth\images\nk.jpg"
+                        alt="Prefect Name 8"
+                        class="prefect-photo"
+                    >
+                    <h3>Prefect Name 8</h3>
+                    <p class="prefect-title">
+                        Health and Sanitation Prefect
+                    </p>
+                </article>
+
+                <!-- PREFECT 9 -->
+                <article class="prefect-slide" hidden>
+                    <img
+                        src="images/ONE.jpg"
+                        alt="Muhanguzi Pascal"
+                        class="prefect-photo"
+                    >
+                    <h3>Muhanguzi Pascal</h3>
+                    <p class="prefect-title">
+                        Religious Prefect
+                    </p>
+                </article>
+
+                <!-- PREFECT 10 -->
+                <article class="prefect-slide" hidden>
+                    <img
+                        src="images/prefect10.jpg"
+                        alt="Prefect Name 10"
+                        class="prefect-photo"
+                    >
+                    <h3>Prefect Name 10</h3>
+                    <p class="prefect-title">
+                        Entertainment Prefect
+                    </p>
+                </article>
+
+                <div class="slideshow-controls">
+                    <button
+                        type="button"
+                        id="previousPrefect"
+                    >
+                        ← Previous
+                    </button>
+
+                    <button
+                        type="button"
+                        id="pausePrefects"
+                    >
+                        Pause slideshow
+                    </button>
+
+                    <button
+                        type="button"
+                        id="nextPrefect"
+                    >
+                        Next →
+                    </button>
+                </div>
+
+                <p
+                    class="slide-position"
+                    id="prefectPosition"
+                ></p>
+
+                <div
+                    class="prefect-dots"
+                    id="prefectDots"
+                ></div>
+
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <p>Luigi Giussani High School.</p>
+    <p>With Our Hands But with HIS strength.</p>
+</footer>
+
+<script>
+    (() => {
+        const slides = document.querySelectorAll(
+            ".prefect-slide"
+        );
+
+        const position =
+            document.getElementById("prefectPosition");
+
+        const dotsContainer =
+            document.getElementById("prefectDots");
+
+        const pauseButton =
+            document.getElementById("pausePrefects");
+
+        const slideshow = document.querySelector(
+            ".prefect-slideshow"
+        );
+
+        let currentSlide = 0;
+        let timer = null;
+        let paused = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+        let pointerInside = false;
+        let focusInside = false;
+
+        const dots = [];
+
+        slides.forEach(function (slide, index) {
+            const dot =
+                document.createElement("button");
+
+            dot.type = "button";
+            dot.className = "prefect-dot";
+
+            dot.setAttribute(
+                "aria-label",
+                "Show prefect " + (index + 1)
+            );
+
+            dot.addEventListener(
+                "click",
+                function () {
+                    showSlide(index);
+                    updateTimer();
+                }
+            );
+
+            dotsContainer.appendChild(dot);
+            dots.push(dot);
+        });
+
+        function showSlide(index) {
+            currentSlide =
+                (index + slides.length) %
+                slides.length;
+
+            slides.forEach(
+                function (slide, slideIndex) {
+                    slide.hidden =
+                        slideIndex !== currentSlide;
+                }
+            );
+
+            dots.forEach(
+                function (dot, dotIndex) {
+                    dot.setAttribute(
+                        "aria-current",
+                        dotIndex === currentSlide
+                            ? "true"
+                            : "false"
+                    );
+                }
+            );
+
+            position.textContent =
+                "Prefect " +
+                (currentSlide + 1) +
+                " of " +
+                slides.length;
+        }
+
+        function updateTimer() {
+            clearInterval(timer);
+            timer = null;
+
+            const canPlay =
+                !paused &&
+                !pointerInside &&
+                !focusInside &&
+                !document.hidden &&
+                slides.length > 1;
+
+            if (canPlay) {
+                timer = setInterval(
+                    function () {
+                        showSlide(
+                            currentSlide + 1
+                        );
+                    },
+                    3000
+                );
+            }
+
+            pauseButton.textContent = paused
+                ? "Play slideshow"
+                : "Pause slideshow";
+        }
+
+        document
+            .getElementById("previousPrefect")
+            .addEventListener(
+                "click",
+                function () {
+                    showSlide(currentSlide - 1);
+                    updateTimer();
+                }
+            );
+
+        document
+            .getElementById("nextPrefect")
+            .addEventListener(
+                "click",
+                function () {
+                    showSlide(currentSlide + 1);
+                    updateTimer();
+                }
+            );
+
+        pauseButton.addEventListener(
+            "click",
+            function () {
+                paused = !paused;
+                updateTimer();
+            }
+        );
+
+        slideshow.addEventListener(
+            "mouseenter",
+            function () {
+                pointerInside = true;
+                updateTimer();
+            }
+        );
+
+        slideshow.addEventListener(
+            "mouseleave",
+            function () {
+                pointerInside = false;
+                updateTimer();
+            }
+        );
+
+        slideshow.addEventListener(
+            "focusin",
+            function () {
+                focusInside = true;
+                updateTimer();
+            }
+        );
+
+        slideshow.addEventListener(
+            "focusout",
+            function (event) {
+                focusInside =
+                    slideshow.contains(
+                        event.relatedTarget
+                    );
+
+                updateTimer();
+            }
+        );
+
+        document.addEventListener(
+            "visibilitychange",
+            updateTimer
+        );
+
+        showSlide(0);
+        updateTimer();
+    })();
+</script>
+
+</body>
+</html>

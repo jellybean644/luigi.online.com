@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luigi Giussani High School</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container nav-container">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">LGHS</span>
+            <span>Luigi Giussani High School</span>
+        </a>
+
+        <button class="menu-button" onclick="toggleMenu()">☰</button>
+
+        <nav id="navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="classes.html">Classes</a>
+            <a href="teacher-login.html">Teacher Login</a>
+            <a href="school-team.html">School Team</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+<section class="hero">
+    <div class="hero-slide active" style="background-image: url('images/images.jpg');">
+        <div class="hero-content">
+            <p class="small-title">WELCOME TO LUIGI GIUSSANI HIGH SCHOOL</p>
+            <h1>Learning today.<br>Leading tomorrow.</h1>
+            <p>
+                A beautiful learning environment where students develop
+                knowledge, discipline and confidence.
+            </p>
+            <a href="classes.html" class="button primary-button">
+                Open Student Portal
+            </a>
+        </div>
+    </div>
+
+    <div class="hero-slide" style="background-image: url('images/dove.jpg');">
+        <div class="hero-content">
+            <p class="small-title">QUALITY EDUCATION</p>
+            <h1>Every learner<br>has potential.</h1>
+            <p>
+                We help learners grow academically, socially and creatively.
+            </p>
+            <a href="about.html" class="button light-button">
+                Learn About Us
+            </a>
+        </div>
+    </div>
+
+    <div class="hero-slide" style="background-image: url('images/kenneth.jpeg');">
+        <div class="hero-content">
+            <p class="small-title">ONLINE ASSIGNMENT PORTAL</p>
+            <h1>Work smarter.<br>Learn better.</h1>
+            <p>
+                Students can access class assignments and learning materials
+                online.
+            </p>
+            <a href="classes.html" class="button primary-button">
+                View Classes
+            </a>
+        </div>
+    </div>
+
+    <button class="slider-arrow left-arrow" onclick="changeSlide(-1)">❮</button>
+    <button class="slider-arrow right-arrow" onclick="changeSlide(1)">❯</button>
+
+    <div class="slider-dots">
+        <span class="dot active-dot" onclick="showSlide(0)"></span>
+        <span class="dot" onclick="showSlide(1)"></span>
+        <span class="dot" onclick="showSlide(2)"></span>
+    </div>
+</section>
+
+<section class="container quick-links">
+    <a href="classes.html" class="quick-card">
+        <div class="quick-icon">📚</div>
+        <h3>Student Portal</h3>
+        <p>Access your class assignments.</p>
+    </a>
+
+    <a href="teacher-login.html" class="quick-card">
+        <div class="quick-icon">👩‍🏫</div>
+        <h3>Teacher Login</h3>
+        <p>Post and manage assignments.</p>
+    </a>
+
+    <a href="about.html" class="quick-card">
+        <div class="quick-icon">🏫</div>
+        <h3>Our School</h3>
+        <p>Learn about our school.</p>
+    </a>
+</section>
+
+<section class="container section">
+    <div class="section-heading">
+        <p class="small-title">WHY CHOOSE US</p>
+        <h2>Helping learners grow with confidence</h2>
+    </div>
+
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-icon">🎓</div>
+            <h3>Excellent Learning</h3>
+            <p>
+                We support students through lessons, assignments and feedback.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🌱</div>
+            <h3>Student Development</h3>
+            <p>
+                We develop academic, social, creative and leadership skills.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">💻</div>
+            <h3>Digital Access</h3>
+            <p>
+                Students can access school work through their class portal.
+            </p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer class="footer">
+    <div class="container footer-grid">
+        <div>
+            <h3>Luigi Giussani High School</h3>
+            <p>
+                Inspiring learners to achieve excellence through knowledge,
+                discipline and creativity.
+            </p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="classes.html">Student Portal</a>
+            <a href="teacher-login.html">Teacher Login</a>
+        </div>
+
+        <div>
+            <h3>Contact</h3>
+            <p>Kampala, Uganda</p>
+            <p>+256 783464627</p>
+            <p>info@luigigiussani.ac.ug</p>
+        </div>
+    </div>
+
+    <div class="copyright">
+           Luigi Giussani High School. With Our Hands But with HIS strength.
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Login | Luigi Giussani High School</title>
+
+    <style>
+        :root {
+            --navy: #090936;
+            --primary: #176b87;
+            --primary-dark: #10516a;
+            --gold: #f4b942;
+            --background: #f3f7fb;
+            --white: #ffffff;
+            --text: #17283b;
+            --muted: #607286;
+            --border: #dfe8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--background);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        .container {
+            width: min(1150px, calc(100% - 36px));
+            margin-inline: auto;
+        }
+
+        /* HEADER */
+
+        .site-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            min-height: 96px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--navy);
+        }
+
+        .logo-icon {
+            display: grid;
+            place-items: center;
+            width: 58px;
+            height: 58px;
+            flex-shrink: 0;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+
+        .brand-name {
+            display: block;
+            font-size: 1rem;
+            font-weight: 800;
+            line-height: 1.25;
+        }
+
+        .brand-subtitle {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+        }
+
+        .navigation {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--muted);
+        }
+
+        .navigation a:hover,
+        .navigation a[aria-current="page"] {
+            color: var(--primary);
+        }
+
+        /* LOGIN SECTION */
+
+        .login-area {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 35px;
+            align-items: center;
+            padding: 60px 0;
+        }
+
+        .welcome-side {
+            color: var(--white);
+            background: linear-gradient(
+                135deg,
+                var(--navy),
+                var(--primary)
+            );
+            padding: 45px 38px;
+            border-radius: 22px;
+            box-shadow: 0 15px 35px rgba(9, 9, 54, 0.20);
+        }
+
+        .welcome-side .eyebrow {
+            margin: 0 0 12px;
+            color: var(--gold);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+        }
+
+        .welcome-side h1 {
+            margin: 0 0 15px;
+            font-size: clamp(1.9rem, 4vw, 2.8rem);
+            line-height: 1.15;
+        }
+
+        .welcome-side p {
+            margin: 0 0 18px;
+            color: #e1eef8;
+        }
+
+        .portal-list {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0 0;
+        }
+
+        .portal-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+            color: #eaf4fb;
+        }
+
+        .portal-list span {
+            display: grid;
+            place-items: center;
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--gold);
+            font-weight: 800;
+        }
+
+        /* LOGIN CARD */
+
+        .login-card {
+            padding: 38px 32px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(16, 40, 65, 0.10);
+        }
+
+        .login-card h2 {
+            margin: 0 0 8px;
+            color: var(--navy);
+            font-size: 1.8rem;
+        }
+
+        .login-card > p {
+            margin: 0 0 25px;
+            color: var(--muted);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 18px;
+            border: 1px solid #c7d5e2;
+            border-radius: 11px;
+            background: #fbfdff;
+            color: var(--text);
+        }
+
+        input:focus {
+            outline: 3px solid #d0e8f2;
+            border-color: var(--primary);
+        }
+
+        .login-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 10px;
+            background: var(--primary);
+            color: var(--white);
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background: var(--primary-dark);
+        }
+
+        .login-note {
+            margin: 20px 0 0;
+            padding: 14px;
+            border-left: 4px solid var(--gold);
+            border-radius: 9px;
+            background: #fff7e4;
+            font-size: 0.9rem;
+        }
+
+        .student-link {
+            display: inline-block;
+            margin-top: 18px;
+            color: var(--primary);
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .student-link:hover {
+            text-decoration: underline;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            padding: 25px 18px;
+            color: #ffffff;
+            background: var(--navy);
+            text-align: center;
+            font-size: 0.88rem;
+        }
+
+        /* SMALL SCREENS */
+
+        @media (max-width: 900px) {
+            .login-area {
+                grid-template-columns: 1fr;
+                padding: 35px 0;
+            }
+
+            .header-inner {
+                flex-wrap: wrap;
+                padding: 15px 0;
+            }
+
+            .navigation {
+                width: 100%;
+                gap: 14px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .welcome-side,
+            .login-card {
+                padding: 26px 20px;
+            }
+
+            .logo-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .brand-name {
+                font-size: 0.9rem;
+            }
+
+            .brand-subtitle {
+                font-size: 0.68rem;
+            }
+
+            .navigation {
+                width: 100%;
+                gap: 14px;
+            }
+
+            .navigation a {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+
+        <a href="index.html" class="brand">
+            <span class="logo-icon">LGHS</span>
+
+            <span>
+                <span class="brand-name">
+                    Luigi Giussani High School
+                </span>
+
+                <span class="brand-subtitle">
+                    SCHOOL WEBSITE &amp; ASSIGNMENT PORTAL
+                </span>
+            </span>
+        </a>
+
+        <nav class="navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="classes.html">Classes</a>
+            <a href="school-team.html">School Team</a>
+            <a
+                href="teacher-login.html"
+                aria-current="page"
+            >
+                Login
+            </a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="login-area">
+
+        <div class="welcome-side">
+
+            <p class="eyebrow">
+                WELCOME TO LUIGI GIUSSANI HIGH SCHOOL
+            </p>
+
+            <h1>
+                Login to the School Assignment Portal
+            </h1>
+
+            <p>
+                Teachers can post assignments, while learners
+                can access class work, download materials and
+                submit their completed work.
+            </p>
+
+            <ul class="portal-list">
+                <li>
+                    <span>👩‍🏫</span>
+                    <div>
+                        <strong>Teachers</strong><br>
+                        Post and manage class assignments.
+                    </div>
+                </li>
+
+                <li>
+                    <span>🎓</span>
+                    <div>
+                        <strong>Students</strong><br>
+                        View assignments and submit work.
+                    </div>
+                </li>
+
+                <li>
+                    <span>🏫</span>
+                    <div>
+                        <strong>School Users</strong><br>
+                        Access approved school information.
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="login-card">
+
+            <h2>Login</h2>
+
+            <p>
+                Enter your email and password to continue.
+            </p>
+
+            <form
+                id="loginForm"
+                novalidate
+            >
+
+                <label for="teacherEmail">
+                    Email address
+                </label>
+
+                <input
+                    type="email"
+                    id="teacherEmail"
+                    placeholder="Enter your email"
+                    autocomplete="email"
+                    required
+                >
+
+                <label for="teacherPassword">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="teacherPassword"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+                    Login
+                </button>
+
+            </form>
+
+            <div class="login-note">
+                <strong>Note:</strong>
+                This page is not only for teachers. Students
+                and other approved school users can also access
+                the portal.
+            </div>
+
+            <a
+                href="classes.html"
+                class="student-link"
+            >
+                Are you a student? Open the student portal →
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+    LUIGI GIUSSANI HIGH SCHOOL — Assignment Portal
+</footer>
+
+<script>
+(function () {
+    "use strict";
+
+    const teachers = [
+        {
+            email: "teacher@school.com",
+            password: "teacher123",
+            name: "Demo Teacher"
+        },
+        {
+            email: "okello@school.com",
+            password: "okello123",
+            name: "Mr. Okello"
+        },
+        {
+            email: "aisha@school.com",
+            password: "aisha123",
+            name: "Ms. Aisha"
+        },
+        {
+            email: "peter@school.com",
+            password: "peter123",
+            name: "Mr. Peter"
+        },
+        {
+            email: "namusoke@school.com",
+            password: "namusoke123",
+            name: "Mrs. Namusoke"
+        },
+        {
+            email: "joseph@school.com",
+            password: "joseph123",
+            name: "Mr. Joseph"
+        },
+        {
+            email: "mafabikenneth@school.com",
+            password: "kenneth256",
+            name: "Mr kenneth"
+        }
+    ];
+
+    const form =
+        document.getElementById("loginForm");
+
+    const emailInput =
+        document.getElementById("teacherEmail");
+
+    const passwordInput =
+        document.getElementById("teacherPassword");
+
+    form.addEventListener(
+        "submit",
+        function (event) {
+            event.preventDefault();
+
+            const email =
+                emailInput.value.trim().toLowerCase();
+
+            const password =
+                passwordInput.value;
+
+            const teacher = teachers.find(
+                function (account) {
+                    return (
+                        account.email.toLowerCase() ===
+                            email &&
+                        account.password === password
+                    );
+                }
+            );
+
+            if (!teacher) {
+                alert(
+                    "Wrong email or password. Please try again."
+                );
+                return;
+            }
+
+            try {
+                sessionStorage.setItem(
+                    "teacherLoggedIn",
+                    "true"
+                );
+
+                sessionStorage.setItem(
+                    "teacherName",
+                    teacher.name
+                );
+
+                sessionStorage.setItem(
+                    "teacherEmail",
+                    teacher.email
+                );
+            } catch (error) {
+                console.error(error);
+
+                alert(
+                    "Browser storage is unavailable. Please open the website with Live Server."
+                );
+
+                return;
+            }
+
+            window.location.href =
+                "teacher-dashboard.html";
+        }
+    );
+})();
+</script>
+
+<section
+    id="teacherAssignmentSection"
+    style="
+        display: none;
+        max-width: 700px;
+        margin: 30px auto;
+        padding: 25px;
+        border-radius: 18px;
+        background: #ffffff;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    "
+>
+    <h2 style="margin-top: 0;">
+        Post Assignment
+    </h2>
+
+    <label for="assignmentSubject">
+        Subject
+    </label>
+
+    <select
+        id="assignmentSubject"
+        style="
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: 1px solid #dfe8f0;
+        "
+    >
+        <option value="Mathematics">
+            Mathematics
+        </option>
+
+        <option value="English">
+            English
+        </option>
+
+        <option value="Biology">
+            Biology
+        </option>
+
+        <option value="Chemistry">
+            Chemistry
+        </option>
+
+        <option value="Physics">
+            Physics
+        </option>
+
+        <option value="History">
+            History
+        </option>
+
+        <option value="Geography">
+            Geography
+        </option>
+    </select>
+
+    <label for="assignmentText">
+        Assignment question
+    </label>
+
+    <textarea
+        id="assignmentText"
+        rows="6"
+        placeholder="Type the assignment here"
+        style="
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: 1px solid #dfe8f0;
+        "
+    ></textarea>
+
+    <button
+        id="postAssignmentButton"
+        style="
+            padding: 12px 20px;
+            border: 0;
+            border-radius: 10px;
+            background: #176b87;
+            color: #ffffff;
+            font-weight: 800;
+            cursor: pointer;
+        "
+    >
+        Post Assignment
+    </button>
+
+    <p
+        id="assignmentMessage"
+        style="
+            margin-top: 12px;
+            font-weight: 700;
+        "
+    ></p>
+
+</section>
+
+<script>
+    const assignmentSubject =
+        document.getElementById("assignmentSubject");
+
+    const assignmentText =
+        document.getElementById("assignmentText");
+
+    const assignmentMessage =
+        document.getElementById("assignmentMessage");
+
+    const postAssignmentButton =
+        document.getElementById("postAssignmentButton");
+
+    postAssignmentButton.addEventListener(
+        "click",
+        function () {
+            const subject =
+                assignmentSubject.value;
+
+            const question =
+                assignmentText.value.trim();
+
+            if (question === "") {
+                assignmentMessage.style.color = "#b42318";
+                assignmentMessage.textContent =
+                    "Please type the assignment question.";
+                return;
+            }
+
+            const savedAssignments =
+                JSON.parse(
+                    localStorage.getItem(
+                        "teacherAssignments"
+                    ) || "{}"
+                );
+
+            savedAssignments[subject] = question;
+
+            localStorage.setItem(
+                "teacherAssignments",
+                JSON.stringify(savedAssignments)
+            );
+
+            assignmentMessage.style.color = "#146c43";
+            assignmentMessage.textContent =
+                "The " +
+                subject +
+                " assignment has been posted successfully.";
+
+            assignmentText.value = "";
+        }
+    );
+</script>
+</body>
+</html>

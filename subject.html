@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Assignments | Luigi Giussani High School</title>
+
+    <link
+        rel="icon"
+        type="image/jpeg"
+        href="images/image.jpg"
+    >
+
+    <style>
+        :root {
+            --navy: #090936;
+            --primary: #176b87;
+            --primary-dark: #10516a;
+            --gold: #f4b942;
+            --background: #f3f7fb;
+            --text: #17283b;
+            --muted: #607286;
+            --border: #dfe8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--background);
+        }
+
+        .container {
+            width: min(1050px, calc(100% - 36px));
+            margin-inline: auto;
+        }
+
+        .header {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            min-height: 94px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--navy);
+        }
+
+        .logo-icon {
+            display: grid;
+            place-items: center;
+            width: 58px;
+            height: 58px;
+            flex-shrink: 0;
+            background: var(--navy);
+            color: #ffffff;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+
+        .brand-name {
+            display: block;
+            font-weight: 800;
+            line-height: 1.25;
+        }
+
+        .brand-subtitle {
+            display: block;
+            margin-top: 4px;
+            font-size: 0.75rem;
+            letter-spacing: 0.14em;
+        }
+
+        .navigation {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .navigation a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .banner {
+            padding: 48px 0;
+            color: #ffffff;
+            background: linear-gradient(
+                120deg,
+                var(--navy),
+                var(--primary)
+            );
+        }
+
+        .eyebrow {
+            margin: 0 0 8px;
+            color: var(--gold);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+        }
+
+        .banner h1 {
+            margin: 0 0 10px;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            line-height: 1.2;
+        }
+
+        .banner p:last-child {
+            margin-bottom: 0;
+        }
+
+        main {
+            padding: 30px 0 60px;
+        }
+
+        .notice {
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            border-left: 4px solid var(--gold);
+            border-radius: 9px;
+            background: #fff7e4;
+        }
+
+        .assignment-list {
+            display: grid;
+            gap: 24px;
+        }
+
+        .assignment-card {
+            padding: 28px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: #ffffff;
+            box-shadow: 0 8px 24px rgba(16, 40, 65, 0.05);
+        }
+
+        .assignment-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .assignment-top h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            overflow-wrap: anywhere;
+        }
+
+        .due-date {
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: #eaf5fb;
+            color: var(--primary-dark);
+            font-size: 0.85rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .instructions {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+
+        .teacher-name {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .attachment {
+            margin-top: 22px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: #f8fbfe;
+        }
+
+        .attachment h3 {
+            margin: 0 0 8px;
+            font-size: 1rem;
+        }
+
+        .file-name {
+            margin: 0 0 16px;
+            color: var(--muted);
+            overflow-wrap: anywhere;
+        }
+
+        .file-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 11px 17px;
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .primary-button {
+            color: #ffffff;
+            background: var(--primary);
+        }
+
+        .primary-button:hover {
+            background: var(--primary-dark);
+        }
+
+        .outline-button {
+            color: var(--primary);
+            background: #ffffff;
+        }
+
+        .outline-button:hover {
+            background: #eaf5fb;
+        }
+
+        .file-note {
+            margin: 14px 0 0;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .warning {
+            color: #8a4600;
+        }
+
+        .submission-section {
+            margin-top: 22px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 26px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .footer {
+            padding: 24px 18px;
+            color: #ffffff;
+            background: var(--navy);
+            text-align: center;
+            font-size: 0.88rem;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        @media (max-width: 650px) {
+            .header-inner {
+                flex-wrap: wrap;
+                padding: 14px 0;
+            }
+
+            .navigation {
+                width: 100%;
+                font-size: 0.9rem;
+            }
+
+            .assignment-top {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .assignment-card {
+                padding: 20px;
+            }
+
+            .attachment {
+                padding: 16px;
+            }
+
+            .brand-name {
+                font-size: 0.9rem;
+            }
+
+            .logo-icon {
+                width: 48px;
+                height: 48px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="container header-inner">
+
+        <a href="index.html" class="brand">
+            <span class="logo-icon">LGHS</span>
+
+            <span>
+                <span class="brand-name">
+                    Luigi Giussani High School
+                </span>
+
+                <span class="brand-subtitle">
+                    SCHOOL WEBSITE &amp; ASSIGNMENT PORTAL
+                </span>
+            </span>
+        </a>
+
+        <nav class="navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="classes.html">Classes</a>
+            <a href="teacher-login.html">Teacher Login</a>
+        </nav>
+
+    </div>
+</header>
+
+<section class="banner">
+    <div class="container">
+        <p id="classLabel" class="eyebrow">STUDENT PORTAL</p>
+
+        <h1 id="subjectHeading">Assignments</h1>
+
+        <p>
+            Read the instructions, view or download the paper,
+            then submit your completed work.
+        </p>
+    </div>
+</section>
+
+<main class="container">
+
+    <p id="pageStatus" role="status" aria-live="polite">
+        Loading assignments...
+    </p>
+
+    <div id="assignmentList" class="assignment-list"></div>
+
+    <a href="classes.html" id="backLink" class="back-link">
+        ← Back to classes
+    </a>
+
+    <noscript>
+        <p>Enable JavaScript to load assignments.</p>
+    </noscript>
+
+</main>
+
+<footer class="footer">
+    LUIGI GIUSSANI HIGH SCHOOL — Assignment Portal
+</footer>
+
+<script>
+(function () {
+    "use strict";
+
+    const parameters = new URLSearchParams(
+        window.location.search
+    );
+
+    const className = parameters.get("class");
+    const subjectName = parameters.get("subject");
+
+    const classLabel =
+        document.getElementById("classLabel");
+
+    const subjectHeading =
+        document.getElementById("subjectHeading");
+
+    const status =
+        document.getElementById("pageStatus");
+
+    const assignmentList =
+        document.getElementById("assignmentList");
+
+    const backLink =
+        document.getElementById("backLink");
+
+    const validClasses = [
+        "S1", "S2", "S3", "S4", "S5", "S6"
+    ];
+
+    if (
+        !validClasses.includes(className) ||
+        !subjectName
+    ) {
+        status.textContent =
+            "Choose a class and subject from the student portal first.";
+        return;
+    }
+
+    try {
+        if (
+            sessionStorage.getItem("allowedClass") !==
+            className
+        ) {
+            window.location.replace(
+                "class.html?class=" +
+                encodeURIComponent(className)
+            );
+            return;
+        }
+    } catch (error) {
+        status.textContent =
+            "Browser storage is unavailable. Open the project " +
+            "with Live Server and enter the class code again.";
+        console.error(error);
+        return;
+    }
+
+    classLabel.textContent =
+        className + " SUBJECT";
+
+    subjectHeading.textContent =
+        subjectName + " Assignments";
+
+    backLink.href =
+        "class.html?class=" +
+        encodeURIComponent(className);
+
+    backLink.textContent =
+        "← Back to " + className + " subjects";
+
+    let assignments;
+
+    try {
+        const stored = localStorage.getItem(
+            "assignments"
+        );
+
+        assignments = stored
+            ? JSON.parse(stored)
+            : [];
+
+        if (!Array.isArray(assignments)) {
+            throw new Error(
+                "Invalid assignment data."
+            );
+        }
+    } catch (error) {
+        status.textContent =
+            "Assignments could not be loaded. Please contact the teacher.";
+        console.error(error);
+        return;
+    }
+
+    const matching = assignments.filter(
+        function (assignment) {
+            return (
+                assignment &&
+                assignment.className === className &&
+                assignment.subjectName === subjectName
+            );
+        }
+    );
+
+    if (matching.length === 0) {
+        status.textContent =
+            "No assignments have been saved for this class and subject.";
+        return;
+    }
+
+    status.textContent =
+        matching.length + " assignment(s) available.";
+
+    const supportedFiles = {
+        pdf: {
+            mime: "application/pdf",
+            preview: true
+        },
+        jpg: {
+            mime: "image/jpeg",
+            preview: true
+        },
+        jpeg: {
+            mime: "image/jpeg",
+            preview: true
+        },
+        png: {
+            mime: "image/png",
+            preview: true
+        },
+        doc: {
+            mime: "application/msword",
+            preview: false
+        },
+        docx: {
+            mime: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            preview: false
+        },
+        ppt: {
+            mime: "application/vnd.ms-powerpoint",
+            preview: false
+        },
+        pptx: {
+            mime: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+            preview: false
+        }
+    };
+
+    function createFileUrl(fileData, mimeType) {
+        const match = /^data:[^,]*;base64,([A-Za-z0-9+/=\s]+)$/.exec(
+            fileData
+        );
+
+        if (!match) {
+            throw new Error(
+                "The stored document format is invalid."
+            );
+        }
+
+        const decoded = atob(
+            match[1].replace(/\s/g, "")
+        );
+
+        const bytes = new Uint8Array(
+            decoded.length
+        );
+
+        for (
+            let index = 0;
+            index < decoded.length;
+            index++
+        ) {
+            bytes[index] =
+                decoded.charCodeAt(index);
+        }
+
+        const blob = new Blob([bytes], {
+            type: mimeType
+        });
+
+        return URL.createObjectURL(blob);
+    }
+
+    matching.slice().reverse().forEach(
+        function (assignment) {
+            const card =
+                document.createElement("article");
+
+            card.className = "assignment-card";
+
+            const top =
+                document.createElement("div");
+
+            top.className = "assignment-top";
+
+            const title =
+                document.createElement("h2");
+
+            title.textContent =
+                assignment.title ||
+                "Untitled assignment";
+
+            const dueDate =
+                document.createElement("span");
+
+            dueDate.className = "due-date";
+
+            dueDate.textContent =
+                "Due: " +
+                (assignment.dueDate ||
+                    "Not specified");
+
+            top.append(title, dueDate);
+
+            const instructions =
+                document.createElement("p");
+
+            instructions.className =
+                "instructions";
+
+            instructions.textContent =
+                assignment.instructions || "";
+
+            const teacher =
+                document.createElement("p");
+
+            teacher.className = "teacher-name";
+
+            teacher.textContent =
+                "Posted by " +
+                (assignment.teacherName ||
+                    "Teacher");
+
+            const attachment =
+                document.createElement("div");
+
+            attachment.className = "attachment";
+
+            const attachmentTitle =
+                document.createElement("h3");
+
+            attachmentTitle.textContent =
+                "Assignment paper";
+
+            attachment.appendChild(
+                attachmentTitle
+            );
+
+            const fileName =
+                typeof assignment.fileName ===
+                "string"
+                    ? assignment.fileName
+                    : "";
+
+            const extension = fileName
+                .split(".")
+                .pop()
+                .toLowerCase();
+
+            const fileSettings =
+                supportedFiles[extension];
+
+            if (
+                !fileName ||
+                typeof assignment.fileData !==
+                    "string" ||
+                !assignment.fileData
+            ) {
+                const warning =
+                    document.createElement("p");
+
+                warning.className = "warning";
+
+                warning.textContent =
+                    "The actual paper was not saved with this assignment. " +
+                    "The teacher must post it again with the document attached.";
+
+                attachment.appendChild(warning);
+            } else if (!fileSettings) {
+                const warning =
+                    document.createElement("p");
+
+                warning.className = "warning";
+
+                warning.textContent =
+                    "This attachment type is not supported by this demonstration.";
+
+                attachment.appendChild(warning);
+            } else {
+                try {
+                    const fileUrl = createFileUrl(
+                        assignment.fileData,
+                        fileSettings.mime
+                    );
+
+                    const nameLabel =
+                        document.createElement("p");
+
+                    nameLabel.className =
+                        "file-name";
+
+                    nameLabel.textContent =
+                        fileName;
+
+                    const actions =
+                        document.createElement("div");
+
+                    actions.className =
+                        "file-actions";
+
+                    if (fileSettings.preview) {
+                        const view =
+                            document.createElement("a");
+
+                        view.className =
+                            "button outline-button";
+
+                        view.href = fileUrl;
+                        view.target = "_blank";
+                        view.rel = "noopener";
+                        view.textContent =
+                            "View Paper";
+
+                        actions.appendChild(view);
+                    }
+
+                    const download =
+                        document.createElement("a");
+
+                    download.className =
+                        "button primary-button";
+
+                    download.href = fileUrl;
+                    download.download = fileName;
+                    download.textContent =
+                        "Download Assignment";
+
+                    actions.appendChild(download);
+
+                    const note =
+                        document.createElement("p");
+
+                    note.className = "file-note";
+
+                    note.textContent =
+                        fileSettings.preview
+                            ? "If the paper does not open in your browser, use Download Assignment."
+                            : "Download this document and open it in a compatible Word or PowerPoint application.";
+
+                    attachment.append(
+                        nameLabel,
+                        actions,
+                        note
+                    );
+                } catch (error) {
+                    console.error(error);
+
+                    const warning =
+                        document.createElement("p");
+
+                    warning.className = "warning";
+
+                    warning.textContent =
+                        "The saved paper could not be opened. " +
+                        "Ask the teacher to attach and post it again.";
+
+                    attachment.appendChild(
+                        warning
+                    );
+                }
+            }
+
+            /* ============================
+               SUBMIT WORK BUTTON
+               ============================ */
+
+            const submissionSection =
+                document.createElement("div");
+
+            submissionSection.className =
+                "submission-section";
+
+            const submissionActions =
+                document.createElement("div");
+
+            submissionActions.className =
+                "file-actions";
+
+            const submitButton =
+                document.createElement("a");
+
+            submitButton.className =
+                "button primary-button";
+
+            submitButton.href =
+                "submit-work.html";
+
+            submitButton.textContent =
+                "Submit Work";
+
+            submitButton.addEventListener(
+                "click",
+                function (event) {
+                    event.preventDefault();
+
+                    const selectedAssignment = {
+                        ...assignment,
+                        subject: subjectName,
+                        subjectName: subjectName,
+                        className: className
+                    };
+
+                    try {
+                        localStorage.setItem(
+                            "currentAssignment",
+                            JSON.stringify(
+                                selectedAssignment
+                            )
+                        );
+                    } catch (error) {
+                        console.error(error);
+
+                        alert(
+                            "The assignment could not be prepared for submission. Please try again."
+                        );
+
+                        return;
+                    }
+
+                    window.location.href =
+                        "submit-work.html";
+                }
+            );
+
+            submissionActions.appendChild(
+                submitButton
+            );
+
+            submissionSection.appendChild(
+                submissionActions
+            );
+
+            card.append(
+                top,
+                instructions,
+                teacher,
+                attachment,
+                submissionSection
+            );
+
+            assignmentList.appendChild(card);
+        }
+    );
+})();
+</script>
+
+</body>
+</html>

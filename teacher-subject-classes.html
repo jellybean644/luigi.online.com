@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Subject Classes - Luigi Giussani High School</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="icon"
+        type="image/jpeg"
+        href="images/image.jpg"
+    >
+</head>
+
+<body>
+
+<header class="header">
+    <div class="container nav-container">
+
+          <a href="index.html" class="logo">
+            <span class="logo-icon">LGHS</span>
+            <span>Luigi Giussani High School</span>
+        </a>
+
+
+        <button
+            type="button"
+            class="menu-button"
+            id="teacherMenuButton"
+            aria-label="Open navigation"
+            aria-expanded="false"
+        >
+            ☰
+        </button>
+
+        <nav id="navigation" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="classes.html">Classes</a>
+            <a href="teacher-dashboard.html">Dashboard</a>
+
+            <a href="teacher-login.html" id="teacherLogoutLink">
+                Logout
+            </a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <section class="page-banner">
+        <div class="container">
+            <p class="small-title">TEACHER WORKSPACE</p>
+
+            <h1 id="selectedSubjectTitle">
+                Subject Classes
+            </h1>
+
+            <p>
+                Select the class where you want to post an assignment.
+            </p>
+        </div>
+    </section>
+
+    <section class="container section">
+
+        <div
+            id="pageMessage"
+            class="notice hidden"
+            role="status"
+        ></div>
+
+        <div id="classSelection" class="hidden">
+
+            <div class="section-heading">
+                <p class="small-title">SELECT CLASS</p>
+
+                <h2 id="selectedSubjectHeading">
+                    Choose a class
+                </h2>
+
+                <p class="dashboard-description">
+                    Work posted for a class will appear under
+                    that class and subject.
+                </p>
+            </div>
+
+            <div
+                id="teacherClassLinks"
+                class="subject-class-grid"
+            ></div>
+
+        </div>
+
+        <a href="teacher-dashboard.html" class="card-link">
+            ← Back to subjects
+        </a>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="container footer-grid">
+
+        <div>
+            <h3>LUIGI GIUSSANI HIGH SCHOOL</h3>
+            <p>School website and assignment portal.</p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="classes.html">Classes</a>
+            <a href="teacher-dashboard.html">Dashboard</a>
+        </div>
+
+        <div>
+            <h3>Teacher Workspace</h3>
+            <p>Select a subject, choose a class and post work.</p>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+       Luigi Giussani High School. With Our Hands But with HIS strength.
+    </div>
+</footer>
+
+<script>
+(function () {
+    const message = document.getElementById("pageMessage");
+    const selection = document.getElementById("classSelection");
+    const linksContainer = document.getElementById("teacherClassLinks");
+
+    function showMessage(text) {
+        message.textContent = text;
+        message.classList.remove("hidden");
+    }
+
+    const menuButton = document.getElementById("teacherMenuButton");
+    const navigation = document.getElementById("navigation");
+
+    menuButton.addEventListener("click", function () {
+        const isOpen = navigation.classList.toggle("show");
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    document
+        .getElementById("teacherLogoutLink")
+        .addEventListener("click", function () {
+            try {
+                sessionStorage.removeItem("teacherLoggedIn");
+            } catch (error) {
+                console.error(error);
+            }
+        });
+
+    try {
+        if (sessionStorage.getItem("teacherLoggedIn") !== "true") {
+            window.location.replace("teacher-login.html");
+            return;
+        }
+    } catch (error) {
+        showMessage(
+            "Browser storage is unavailable. Open the project " +
+            "with Live Server and log in again."
+        );
+        return;
+    }
+
+    const parameters = new URLSearchParams(window.location.search);
+    const subject = (parameters.get("subject") || "").trim();
+
+    if (!subject) {
+        showMessage(
+            "No subject was selected. Return to the dashboard " +
+            "and click a subject."
+        );
+        return;
+    }
+
+    document.getElementById("selectedSubjectTitle").textContent =
+        subject + " Classes";
+
+    document.getElementById("selectedSubjectHeading").textContent =
+        subject + " — Choose a Class";
+
+    const classes = ["S1", "S2", "S3", "S4", "S5", "S6"];
+
+    classes.forEach(function (className) {
+        const card = document.createElement("a");
+        card.className = "subject-class-card";
+
+        const destination = new URLSearchParams({
+            class: className,
+            subject: subject
+        });
+
+        card.href =
+            "create-assignment.html?" + destination.toString();
+
+        const badge = document.createElement("span");
+        badge.className = "class-badge";
+        badge.textContent = className;
+
+        const heading = document.createElement("h2");
+        heading.textContent = subject + " " + className;
+
+        const description = document.createElement("p");
+        description.textContent =
+            "Post an assignment for " + className + ".";
+
+        const action = document.createElement("span");
+        action.className = "card-link";
+        action.textContent = "Open " + className + " →";
+
+        card.append(badge, heading, description, action);
+        linksContainer.appendChild(card);
+    });
+
+    selection.classList.remove("hidden");
+})();
+</script>
+
+</body>
+</html>
